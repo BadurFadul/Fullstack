@@ -1,4 +1,9 @@
+using backend.Database;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add database into the application
+builder.Services.AddDbContext<DatabaseContext>();
 
 // Add services to the container.
 
