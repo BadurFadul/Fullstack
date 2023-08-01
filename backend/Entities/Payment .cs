@@ -10,5 +10,7 @@ namespace backend.Entities
          public string PaymentMethod { get; set; }
         public double PaymentAmount { get; set; }
         public DateTime PaymentDate { get; set; }
+        public User user { get; set; }
+        public Order order { get; set; }
     }
 }

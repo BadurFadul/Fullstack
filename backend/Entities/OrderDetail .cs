@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using backend.Controllers;
 
 namespace backend.Entities
 {
@@ -9,6 +10,8 @@ namespace backend.Entities
     {
         public int Quantity { get; set; }
         public double Price {get; set;}
+        public Order order { get; set; }
+        public Product product { get; set; }
          
     }
 }

@@ -6,14 +6,15 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using backend.Database;
+using backend.Entities;
 
 #nullable disable
 
 namespace backend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230731155200_Database")]
-    partial class Database
+    [Migration("20230801093137_createDatabase")]
+    partial class createDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +24,7 @@ namespace backend.Migrations
                 .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "role", new[] { "admin", "client" });
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("backend.Controllers.Product", b =>
@@ -49,7 +51,12 @@ namespace backend.Migrations
                     b.Property<int>("StockQuantity")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("categoryId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("categoryId");
 
                     b.ToTable("Products");
                 });
@@ -63,7 +70,17 @@ namespace backend.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("productId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("shoppingCartId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("productId");
+
+                    b.HasIndex("shoppingCartId");
 
                     b.ToTable("CartItems");
                 });
@@ -115,7 +132,12 @@ namespace backend.Migrations
                     b.Property<double>("TotalPrice")
                         .HasColumnType("double precision");
 
+                    b.Property<Guid>("userId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("userId");
 
                     b.ToTable("Orders");
                 });
@@ -132,7 +154,17 @@ namespace backend.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
+                    b.Property<Guid>("orderId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("productId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("orderId");
+
+                    b.HasIndex("productId");
 
                     b.ToTable("OrderDetails");
                 });
@@ -153,7 +185,17 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("orderId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("userId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("orderId");
+
+                    b.HasIndex("userId");
 
                     b.ToTable("Payments");
                 });
@@ -171,7 +213,17 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("productId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("productId");
 
                     b.ToTable("Reviews");
                 });
@@ -179,7 +231,6 @@ namespace backend.Migrations
             modelBuilder.Entity("backend.Entities.Shipping", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("EstimatedDeliveryDate")
@@ -204,7 +255,6 @@ namespace backend.Migrations
             modelBuilder.Entity("backend.Entities.ShoppingCart", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<int>("UserID")
@@ -245,8 +295,8 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("integer");
+                    b.Property<Role>("Role")
+                        .HasColumnType("role");
 
                     b.Property<string>("ShippingAddress")
                         .IsRequired()
@@ -255,6 +305,167 @@ namespace backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("backend.Controllers.Product", b =>
+                {
+                    b.HasOne("backend.Entities.Category", "category")
+                        .WithMany("Products")
+                        .HasForeignKey("categoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("category");
+                });
+
+            modelBuilder.Entity("backend.Entities.CartItem", b =>
+                {
+                    b.HasOne("backend.Controllers.Product", "product")
+                        .WithMany("cartItems")
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("backend.Entities.ShoppingCart", "shoppingCart")
+                        .WithMany("cartItems")
+                        .HasForeignKey("shoppingCartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("product");
+
+                    b.Navigation("shoppingCart");
+                });
+
+            modelBuilder.Entity("backend.Entities.Order", b =>
+                {
+                    b.HasOne("backend.Entities.User", "user")
+                        .WithMany("orders")
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("backend.Entities.OrderDetail", b =>
+                {
+                    b.HasOne("backend.Entities.Order", "order")
+                        .WithMany("Details")
+                        .HasForeignKey("orderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("backend.Controllers.Product", "product")
+                        .WithMany("orderDetails")
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("order");
+
+                    b.Navigation("product");
+                });
+
+            modelBuilder.Entity("backend.Entities.Payment", b =>
+                {
+                    b.HasOne("backend.Entities.Order", "order")
+                        .WithMany("Payment")
+                        .HasForeignKey("orderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("backend.Entities.User", "user")
+                        .WithMany("payments")
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("order");
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("backend.Entities.Review", b =>
+                {
+                    b.HasOne("backend.Entities.User", "User")
+                        .WithMany("reviews")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("backend.Controllers.Product", "product")
+                        .WithMany("reviews")
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("product");
+                });
+
+            modelBuilder.Entity("backend.Entities.Shipping", b =>
+                {
+                    b.HasOne("backend.Entities.Order", "order")
+                        .WithOne("shipping")
+                        .HasForeignKey("backend.Entities.Shipping", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("order");
+                });
+
+            modelBuilder.Entity("backend.Entities.ShoppingCart", b =>
+                {
+                    b.HasOne("backend.Entities.User", "user")
+                        .WithOne("shoppingCart")
+                        .HasForeignKey("backend.Entities.ShoppingCart", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("backend.Controllers.Product", b =>
+                {
+                    b.Navigation("cartItems");
+
+                    b.Navigation("orderDetails");
+
+                    b.Navigation("reviews");
+                });
+
+            modelBuilder.Entity("backend.Entities.Category", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("backend.Entities.Order", b =>
+                {
+                    b.Navigation("Details");
+
+                    b.Navigation("Payment");
+
+                    b.Navigation("shipping")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("backend.Entities.ShoppingCart", b =>
+                {
+                    b.Navigation("cartItems");
+                });
+
+            modelBuilder.Entity("backend.Entities.User", b =>
+                {
+                    b.Navigation("orders");
+
+                    b.Navigation("payments");
+
+                    b.Navigation("reviews");
+
+                    b.Navigation("shoppingCart")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

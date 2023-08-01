@@ -11,5 +11,6 @@ namespace backend.Entities
         public double ShippingCost { get; set; }
         public string TrackingNumber { get; set; }
         public DateTime EstimatedDeliveryDate { get; set; }
+        public Order order { get; set; }
     }
 }

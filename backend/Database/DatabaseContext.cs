@@ -30,7 +30,22 @@ namespace backend.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new NpgsqlDataSourceBuilder(_configuration.GetConnectionString("DefaultConnection"));
+            builder.MapEnum<Role>();
             optionsBuilder.UseNpgsql(builder.Build());
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasPostgresEnum<Role>();
+
+            modelBuilder.Entity<User>()
+            .HasOne(u => u.shoppingCart)
+            .WithOne(a => a.user)
+            .HasForeignKey<ShoppingCart>(u => u.Id);
+
+            modelBuilder.Entity<Order>()
+            .HasOne(o => o.shipping)
+            .WithOne(o => o.order)
+            .HasForeignKey<Shipping>(u => u.Id);
         }
     }
 }

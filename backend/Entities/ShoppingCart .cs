@@ -8,5 +8,7 @@ namespace backend.Entities
     public class ShoppingCart: BaseEntity 
     {
         public int UserID { get; set; }
+        public User user { get; set; }
+        public List<CartItem> cartItems { get; set; }
     }
 }
