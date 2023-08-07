@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "TZznE1llfPxAQ+iahtl0Hdmf2zXiLm7ru9zQh1EQjdDU6+ZhQYbsk5CFfESwJWr8J4cx/swzsxlSMdfcj7rnMg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Controller\\WebApi.Controller.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bador\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\bador\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

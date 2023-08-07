@@ -1,0 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using WebApi.Domain.Src.Entities;
+
+namespace WebApi.Business.Src.Dtos
+{
+    public class CartItemDto
+    {
+        public int Quantity { get; set; }
+        public ProductDto Product { get; set; }
+    }
+}
