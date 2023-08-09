@@ -5,7 +5,19 @@ using System.Threading.Tasks;
 
 namespace WebApi.Business.Src.Dtos
 {
-    public class CategoryDto
+    public class CategoryReadDto
+    {
+        public string name { get; set; }
+        public string Image { get; set; }
+        public string Description { get; set; }
+    }
+    public class CategoryCreateDto
+    {
+        public string name { get; set; }
+        public string Image { get; set; }
+        public string Description { get; set; }
+    }
+    public class CategoryUpdateDto
     {
         public string name { get; set; }
         public string Image { get; set; }

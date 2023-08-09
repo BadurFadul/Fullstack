@@ -8,7 +8,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Implementations
 {
-    public class ShippingService : BaseService<Shipping, ShippingDto>
+    public class ShippingService : BaseService<Shipping, ShippingReadDto, ShippingCreateDto, ShippingUpdateDto>
     {
         public ShippingService(Domain.Src.Abstractions.IBaseRepo<Shipping> baseRepo, IMapper mapper) : base(baseRepo, mapper)
         {

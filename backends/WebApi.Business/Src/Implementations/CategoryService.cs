@@ -9,7 +9,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Implementations
 {
-    public class CategoryService : BaseService<Category, CategoryDto>
+    public class CategoryService : BaseService<Category, CategoryReadDto, CategoryCreateDto, CategoryUpdateDto>
     {
         public CategoryService(IBaseRepo<Category> baseRepo, IMapper mapper) : base(baseRepo, mapper)
         {

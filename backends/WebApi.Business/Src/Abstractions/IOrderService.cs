@@ -3,7 +3,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Abstractions
 {
-    public interface IOrderService: IBaseService<Order, OrderDto>
+    public interface IOrderService: IBaseService<Order, OrderReadDto, OrderCreateDto, OrderUpdateDto>
     {
         
     }

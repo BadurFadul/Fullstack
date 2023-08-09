@@ -7,8 +7,8 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Abstractions
 {
-    public interface IUserService: IBaseService<User, UserDto>
+    public interface IUserService: IBaseService<User, UserReadDto, UserCreateDto, UserUpdateDto>
     {
-        UserDto UpdatePassword(string id, string password);
+        Task<UserReadDto> UpdatePassword(string id, string password);
     }
 }

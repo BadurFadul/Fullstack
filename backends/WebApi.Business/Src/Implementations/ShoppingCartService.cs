@@ -9,7 +9,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Implementations
 {
-    public class ShoppingCartService : BaseService<ShoppingCart, ShoppingCartDto>
+    public class ShoppingCartService : BaseService<ShoppingCart, ShoppingCartReadDto,ShoppingCartCreateDto,ShoppingCartUpdateDto>
     {
         public ShoppingCartService(IBaseRepo<ShoppingCart> baseRepo, IMapper mapper) : base(baseRepo, mapper)
         {

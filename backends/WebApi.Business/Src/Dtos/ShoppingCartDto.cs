@@ -5,8 +5,16 @@ using System.Threading.Tasks;
 
 namespace WebApi.Business.Src.Dtos
 {
-    public class ShoppingCartDto
+    public class ShoppingCartReadDto
     {
-         public List<CartItemDto> CartItems { get; set; }
+         public List<CartItemReadDto> CartItems { get; set; }
+    }
+    public class ShoppingCartCreateDto
+    {
+        public List<CartItemReadDto> CartItems { get; set; }
+    }
+    public class ShoppingCartUpdateDto
+    {
+        public List<CartItemReadDto> CartItems { get; set; }
     }
 }

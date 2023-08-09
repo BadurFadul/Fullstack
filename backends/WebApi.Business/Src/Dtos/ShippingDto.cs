@@ -5,7 +5,19 @@ using System.Threading.Tasks;
 
 namespace WebApi.Business.Src.Dtos
 {
-    public class ShippingDto
+    public class ShippingReadDto
+    {
+        public string ShippingMethod { get; set; }
+        public double ShippingCost { get; set; }
+        public DateTime EstimatedDeliveryDate { get; set; }
+    }
+    public class ShippingCreateDto
+    {
+        public string ShippingMethod { get; set; }
+        public double ShippingCost { get; set; }
+        public DateTime EstimatedDeliveryDate { get; set; } = DateTime.Now.AddDays(7);
+    }
+    public class ShippingUpdateDto
     {
         public string ShippingMethod { get; set; }
         public double ShippingCost { get; set; }

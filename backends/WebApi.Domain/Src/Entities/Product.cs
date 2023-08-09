@@ -3,7 +3,7 @@ namespace WebApi.Domain.Src.Entities
 {
     public class Product: BaseWithId
     {
-        public string Name { get; set; }
+         public string Name { get; set; }
          public double Price { get; set; }
          public int StockQuantity { get; set; }
          public string Description { get; set; }

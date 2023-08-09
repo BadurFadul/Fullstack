@@ -3,7 +3,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Abstractions
 {
-    public interface ICartItemService: IBaseService<CartItem, CartItemDto>
+    public interface ICartItemService: IBaseService<CartItem, CartItemReadDto, CartItemCreateDto, CartItemUpdateDto>
     {
         
     }

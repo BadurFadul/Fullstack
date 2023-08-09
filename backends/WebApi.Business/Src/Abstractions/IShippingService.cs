@@ -3,7 +3,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Abstractions
 {
-    public interface IShippingService: IBaseService<Shipping, ShippingDto>
+    public interface IShippingService: IBaseService<Shipping, ShippingReadDto, ShippingCreateDto, ShippingUpdateDto>
     {
         
     }

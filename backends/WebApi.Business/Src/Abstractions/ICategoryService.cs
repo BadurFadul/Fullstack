@@ -3,7 +3,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Abstractions
 {
-    public interface ICategoryService: IBaseService<Category, CategoryDto>
+    public interface ICategoryService: IBaseService<Category, CategoryReadDto, CategoryCreateDto, CategoryUpdateDto>
     {
         
     }

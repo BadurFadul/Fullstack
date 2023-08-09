@@ -6,9 +6,17 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Dtos
 {
-    public class CartItemDto
+    public class CartItemReadDto
     {
         public int Quantity { get; set; }
-        public ProductDto Product { get; set; }
+        public ProductReadDto Product { get; set; }
+    }
+    public class CartItemCreateDto
+    {
+        public int Quantity { get; set; }
+    }
+    public class CartItemUpdateDto
+    {
+        public int Quantity { get; set; }
     }
 }

@@ -6,7 +6,19 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Dtos
 {
-    public class OrderDto
+    public class OrderReadDto
+    {
+        public DateTime OrderDate { get; set; }
+        public double TotalPrice { get; set; }
+        public OrderStatus OrderStatus { get; set; }
+    }
+    public class OrderCreateDto
+    {
+        public DateTime OrderDate { get; set; }
+        public double TotalPrice { get; set; }
+        public OrderStatus OrderStatus { get; set; }
+    }
+    public class OrderUpdateDto
     {
         public DateTime OrderDate { get; set; }
         public double TotalPrice { get; set; }

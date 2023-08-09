@@ -9,7 +9,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Implementations
 {
-    public class ReviewService : BaseService<Review, ReviewDto>
+    public class ReviewService : BaseService<Review, ReviewReadDto, ReviewCreateDto, ReviewUpdateDto>
     {
         public ReviewService(IBaseRepo<Review> baseRepo, IMapper mapper) : base(baseRepo, mapper)
         {

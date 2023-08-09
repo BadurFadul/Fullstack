@@ -9,7 +9,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Implementations
 {
-    public class PaymentService : BaseService<Payment, PaymentDto>
+    public class PaymentService : BaseService<Payment, PaymentReadDto, PaymentCreateDto, PaymentUpdateDto>
     {
         public PaymentService(IBaseRepo<Payment> baseRepo, IMapper mapper) : base(baseRepo, mapper)
         {

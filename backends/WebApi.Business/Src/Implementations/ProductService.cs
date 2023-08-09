@@ -9,7 +9,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Implementations
 {
-    public class ProductService : BaseService<Product, ProductDto>
+    public class ProductService : BaseService<Product, ProductReadDto, ProductCreateDto, ProductUpdateDto>
     {
         public ProductService(IBaseRepo<Product> baseRepo, IMapper mapper) : base(baseRepo, mapper)
         {

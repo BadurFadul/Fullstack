@@ -9,7 +9,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Business.Src.Implementations
 {
-    public class OrderDetailServer : BaseService<OrderDetail, OrderDetailDto>
+    public class OrderDetailServer : BaseService<OrderDetail, OrderDetailReadDto, OrderDetailCreateDto, OrderDetailUpdateDto>
     {
         public OrderDetailServer(IBaseRepo<OrderDetail> baseRepo, IMapper mapper) : base(baseRepo, mapper)
         {
