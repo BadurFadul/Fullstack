@@ -6,5 +6,6 @@ namespace WebApi.Domain.Src.Abstractions
     {
         Task<User> CreateAdmin(User user);
         Task<User> UpdatePassword (User user, string password);
+        Task<User> FindOneByEmail (string email);
     }
 }

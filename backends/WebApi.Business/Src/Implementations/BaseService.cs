@@ -30,27 +30,32 @@ namespace WebApi.Business.Src.Implementations
 
         public async Task<IEnumerable<TReadDto>> GetAll(Options queryOptions)
         {
+            if(_repo.GetAll(queryOptions) ==null)
+            {
+                throw new Exception("users not found");
+            }
             return _mapper.Map<IEnumerable<TReadDto>> ( await _repo.GetAll(queryOptions));
         }
 
         public async Task<TReadDto> GetById(string id)
         {
+            if(await _repo.GetById(id)== null)
+            {
+                throw new Exception("user not found");
+            }
            return _mapper.Map<TReadDto> (await _repo.GetById(id));
         }
 
-        public async Task<TReadDto> postItem(TWriteDto item)
+        public virtual async Task<TReadDto> postItem(TWriteDto item)
         {
-            var entity = await _repo.postItem(_mapper.Map<T>(item));
-            return _mapper.Map<TReadDto>(entity);
+            var entity = _mapper.Map<T>(item);
+            var createdEntity = await _repo.postItem(entity);
+            return _mapper.Map<TReadDto>(createdEntity);
         }
 
         public async Task<TReadDto> UpdateItem(string id, TUpdateDto item)
         {
-            var foundItem = await _repo.GetById(id);
-            if(foundItem == null)
-            {
-                throw new InvalidOperationException("Item not found");
-            }
+            _ = await _repo.GetById(id) ?? throw new InvalidOperationException("Item not found");
             var entity = _mapper.Map<T>(item);
             var updatedEntity = await _repo.UpdateItem(id, entity);
             return _mapper.Map<TReadDto>(updatedEntity);
