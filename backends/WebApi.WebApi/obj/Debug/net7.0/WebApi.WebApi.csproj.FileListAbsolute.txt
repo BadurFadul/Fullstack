@@ -59,3 +59,13 @@ C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\EFCore.NamingConventions.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Humanizer.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Npgsql.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\System.CodeDom.dll

@@ -14,7 +14,7 @@ namespace WebApi.WebApi.Configuration
         {
             CreateMap<User,UserReadDto>();
             CreateMap<UserUpdateDto, User>();
-            //CreateMap<U
+            CreateMap<UserCreateDto, User>();
         }
     }
 }

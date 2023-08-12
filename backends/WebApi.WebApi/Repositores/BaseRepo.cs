@@ -54,7 +54,7 @@ namespace WebApi.WebApi.Repositores
             return await query.ToListAsync();
         }
 
-        public async Task<T> GetById(string id)
+        public async Task<T> GetById(Guid id)
         {
             var enrity = await _dbSet.FindAsync(id);
             if(enrity == null)
@@ -76,14 +76,14 @@ namespace WebApi.WebApi.Repositores
             return item;
         }
 
-        public async Task<T> UpdateItem(string id, T item)
+        public async Task<T> UpdateItem(Guid id, T item)
         {
             var enrity = await _dbSet.FindAsync(id);
             if(enrity == null)
             {
                 throw new Exception("Entity not found");
             }
-            _context.Entry(enrity).CurrentValues.SetValues(item);
+            _dbSet.Update(enrity);
             await _context.SaveChangesAsync();
             return enrity;
         }
