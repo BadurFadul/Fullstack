@@ -27,31 +27,32 @@ namespace WebApi.WebApi.Repositores
 
         public async Task<IEnumerable<T>> GetAll(Options queryOptions)
         {
-            IQueryable<T> query = _dbSet;
+            // IQueryable<T> query = _dbSet;
 
-            if (_context.Users == null)
-            {
-                throw new Exception("Users not found");
-            }
-            //Apply searching if needed
-            if(!string.IsNullOrEmpty(queryOptions.searching))
-            {
-                query = query.Where(n => EF.Property<string>(n, "Name").Contains(queryOptions.searching));
-            }
-            // Apply ordering
-            if(queryOptions.OrderByDescending)
-            {
-                query = query.OrderByDescending(n => EF.Property<object>(n, queryOptions.OrderBy));
-            }else
-            {
-                query = query.OrderBy(x => EF.Property<object>(x, queryOptions.OrderBy));
-            }
-            // Apply Pagination
-            if(queryOptions.PagNumber > 0)
-            {
-                query = query.Skip((queryOptions.PagNumber - 1) * queryOptions.PerPage).Take(queryOptions.PerPage);
-            }
-            return await query.ToListAsync();
+            // if (_context.Users == null)
+            // {
+            //     throw new Exception("Users not found");
+            // }
+            // //Apply searching if needed
+            // if(!string.IsNullOrEmpty(queryOptions.searching))
+            // {
+            //     query = query.Where(n => EF.Property<string>(n, "Name").Contains(queryOptions.searching));
+            // }
+            // // Apply ordering
+            // if(queryOptions.OrderByDescending)
+            // {
+            //     query = query.OrderByDescending(n => EF.Property<object>(n, queryOptions.OrderBy));
+            // }else
+            // {
+            //     query = query.OrderBy(x => EF.Property<object>(x, queryOptions.OrderBy));
+            // }
+            // // Apply Pagination
+            // if(queryOptions.PagNumber > 0)
+            // {
+            //     query = query.Skip((queryOptions.PagNumber - 1) * queryOptions.PerPage).Take(queryOptions.PerPage);
+            // }
+            return await _dbSet.ToListAsync();
+            
         }
 
         public async Task<T> GetById(Guid id)

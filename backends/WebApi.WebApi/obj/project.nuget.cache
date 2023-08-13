@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "8PA0fqkAPmE0qrD2KQUMP7QbVKScK/+J+mREsL5kdvYvkSvh2b131bKO2kk6TwJ3F7Zi1vILUNlTo8r1QoDLow==",
+  "dgSpecHash": "7alxcdFWVAOqfeQTwfHBDAoTCPmg18bj+0r8EtNeuONIQQuqiOoNtuIumX6QwSB4xpvxv1pBtFo6qlMr1dgT0w==",
   "success": true,
-  "projectFilePath": "c:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.WebApi\\WebApi.WebApi.csproj",
+  "projectFilePath": "C:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.WebApi\\WebApi.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bador\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\bador\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\bador\\.nuget\\packages\\efcore.namingconventions\\7.0.2\\efcore.namingconventions.7.0.2.nupkg.sha512",
     "C:\\Users\\bador\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\bador\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
