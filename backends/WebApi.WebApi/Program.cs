@@ -11,6 +11,7 @@ using WebApi.Domain.Src.Abstractions;
 using WebApi.Domain.Src.Entities;
 using WebApi.WebApi.AuthorizationRequirement;
 using WebApi.WebApi.Database;
+using WebApi.WebApi.Middleware;
 using WebApi.WebApi.Repositores;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -84,6 +85,9 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddSingleton<OrderOwerOnlyHandler>();
 builder.Services.AddSingleton<UserOnlyHandler>();
 builder.Services.AddSingleton<OnlyReviewOwnerHandler>();
+
+//add Errorhnadlar
+builder.Services.AddSingleton<ErrorHandlerMiddleware>();
 //Config route
 builder.Services.Configure<RouteOptions>(options =>
 {
@@ -121,6 +125,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 
