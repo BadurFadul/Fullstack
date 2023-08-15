@@ -22,25 +22,36 @@ namespace WebApi.WebApi.Database
         {
             _configuration = configuration;
         }
+        static DatabaseContext()
+        {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new NpgsqlDataSourceBuilder(_configuration.GetConnectionString("DefaultConnection"));
+            optionsBuilder.AddInterceptors(new TimeStampInterceptor());
             builder.MapEnum<Role>();
+            //builder.MapEnum<OrderStatus>();
             optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresEnum<Role>();
+            //modelBuilder.HasPostgresEnum<OrderStatus>();
 
             modelBuilder.Entity<User>()
             .HasOne(u => u.shoppingCart)
-            .WithOne(a => a.user)
-            .HasForeignKey<ShoppingCart>(u => u.Id);
+            .WithOne(a => a.User)
+            .HasForeignKey<ShoppingCart>(u => u.ShoppingCartId);
 
             modelBuilder.Entity<Order>()
             .HasOne(o => o.shipping)
             .WithOne(o => o.order)
-            .HasForeignKey<Shipping>(u => u.Id);
+            .HasForeignKey<Shipping>(u => u.ShippingId);
+
+            modelBuilder.Entity<User>()
+            .HasIndex(u => u.Email).IsUnique();
         }
     }
 }

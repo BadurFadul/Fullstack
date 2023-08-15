@@ -34,5 +34,11 @@ namespace WebApi.WebApi.Repositores
             await _context.SaveChangesAsync();
             return user;
         }
+
+         public override async Task<User> postItem(User item)
+         {
+            item.Role = Role.Client;
+            return await base.postItem(item);
+         }
     }
 }

@@ -26,38 +26,38 @@ namespace WebApi.WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.CartItem", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("CartItemId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("cart_item_id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("product_id");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer")
                         .HasColumnName("quantity");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("updated_at");
-
-                    b.Property<Guid>("productId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("product_id");
-
-                    b.Property<Guid>("shoppingCartId")
+                    b.Property<Guid>("ShoppingCartId")
                         .HasColumnType("uuid")
                         .HasColumnName("shopping_cart_id");
 
-                    b.HasKey("Id")
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("CartItemId")
                         .HasName("pk_cart_items");
 
-                    b.HasIndex("productId")
+                    b.HasIndex("ProductId")
                         .HasDatabaseName("ix_cart_items_product_id");
 
-                    b.HasIndex("shoppingCartId")
+                    b.HasIndex("ShoppingCartId")
                         .HasDatabaseName("ix_cart_items_shopping_cart_id");
 
                     b.ToTable("cart_items", (string)null);
@@ -65,13 +65,13 @@ namespace WebApi.WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.Category", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("category_id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
 
                     b.Property<string>("Description")
@@ -85,7 +85,7 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnName("image");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
                     b.Property<string>("name")
@@ -93,7 +93,7 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnType("text")
                         .HasColumnName("name");
 
-                    b.HasKey("Id")
+                    b.HasKey("CategoryId")
                         .HasName("pk_categorys");
 
                     b.ToTable("categorys", (string)null);
@@ -101,13 +101,13 @@ namespace WebApi.WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.Image", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("ImageId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("image_id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
 
                     b.Property<string>("Link")
@@ -120,10 +120,10 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnName("product_id");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
-                    b.HasKey("Id")
+                    b.HasKey("ImageId")
                         .HasName("pk_image");
 
                     b.HasIndex("ProductId")
@@ -134,10 +134,10 @@ namespace WebApi.WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.Order", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("OrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("order_id");
 
                     b.Property<string>("BillingAddress")
                         .IsRequired()
@@ -145,15 +145,16 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnName("billing_address");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
 
                     b.Property<DateTime>("OrderDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("order_date");
 
-                    b.Property<int>("OrderStatus")
-                        .HasColumnType("integer")
+                    b.Property<string>("OrderStatus")
+                        .IsRequired()
+                        .HasColumnType("text")
                         .HasColumnName("order_status");
 
                     b.Property<string>("ShippingAddress")
@@ -166,17 +167,17 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnName("total_price");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("userId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uuid")
                         .HasColumnName("user_id");
 
-                    b.HasKey("Id")
+                    b.HasKey("OrderId")
                         .HasName("pk_orders");
 
-                    b.HasIndex("userId")
+                    b.HasIndex("UserId")
                         .HasDatabaseName("ix_orders_user_id");
 
                     b.ToTable("orders", (string)null);
@@ -184,42 +185,42 @@ namespace WebApi.WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.OrderDetail", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("OrderDetailId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("order_detail_id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("order_id");
 
                     b.Property<double>("Price")
                         .HasColumnType("double precision")
                         .HasColumnName("price");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("product_id");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer")
                         .HasColumnName("quantity");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("orderId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("order_id");
-
-                    b.Property<Guid>("productId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("product_id");
-
-                    b.HasKey("Id")
+                    b.HasKey("OrderDetailId")
                         .HasName("pk_order_details");
 
-                    b.HasIndex("orderId")
+                    b.HasIndex("OrderId")
                         .HasDatabaseName("ix_order_details_order_id");
 
-                    b.HasIndex("productId")
+                    b.HasIndex("ProductId")
                         .HasDatabaseName("ix_order_details_product_id");
 
                     b.ToTable("order_details", (string)null);
@@ -227,21 +228,25 @@ namespace WebApi.WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.Payment", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("PaymentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("payment_id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("order_id");
 
                     b.Property<double>("PaymentAmount")
                         .HasColumnType("double precision")
                         .HasColumnName("payment_amount");
 
                     b.Property<DateTime>("PaymentDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("payment_date");
 
                     b.Property<string>("PaymentMethod")
@@ -250,24 +255,20 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnName("payment_method");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("orderId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("order_id");
-
-                    b.Property<Guid>("userId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uuid")
                         .HasColumnName("user_id");
 
-                    b.HasKey("Id")
+                    b.HasKey("PaymentId")
                         .HasName("pk_payments");
 
-                    b.HasIndex("orderId")
+                    b.HasIndex("OrderId")
                         .HasDatabaseName("ix_payments_order_id");
 
-                    b.HasIndex("userId")
+                    b.HasIndex("UserId")
                         .HasDatabaseName("ix_payments_user_id");
 
                     b.ToTable("payments", (string)null);
@@ -275,13 +276,17 @@ namespace WebApi.WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.Product", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("product_id");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("category_id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
 
                     b.Property<string>("Description")
@@ -303,17 +308,13 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnName("stock_quantity");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<Guid>("categoryId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("category_id");
-
-                    b.HasKey("Id")
+                    b.HasKey("ProductId")
                         .HasName("pk_products");
 
-                    b.HasIndex("categoryId")
+                    b.HasIndex("CategoryId")
                         .HasDatabaseName("ix_products_category_id");
 
                     b.ToTable("products", (string)null);
@@ -321,14 +322,18 @@ namespace WebApi.WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.Review", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("ReviewId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("review_id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("product_id");
 
                     b.Property<int>("Rating")
                         .HasColumnType("integer")
@@ -340,25 +345,21 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnName("review_text");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid")
                         .HasColumnName("user_id");
 
-                    b.Property<Guid>("productId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("product_id");
-
-                    b.HasKey("Id")
+                    b.HasKey("ReviewId")
                         .HasName("pk_reviews");
+
+                    b.HasIndex("ProductId")
+                        .HasDatabaseName("ix_reviews_product_id");
 
                     b.HasIndex("UserId")
                         .HasDatabaseName("ix_reviews_user_id");
-
-                    b.HasIndex("productId")
-                        .HasDatabaseName("ix_reviews_product_id");
 
                     b.ToTable("reviews", (string)null);
                 });
@@ -366,20 +367,25 @@ namespace WebApi.WebApi.Migrations
             modelBuilder.Entity("WebApi.Domain.Src.Entities.Shipping", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
 
                     b.Property<DateTime>("EstimatedDeliveryDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("estimated_delivery_date");
 
                     b.Property<double>("ShippingCost")
                         .HasColumnType("double precision")
                         .HasColumnName("shipping_cost");
+
+                    b.Property<Guid>("ShippingId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("shipping_id");
 
                     b.Property<string>("ShippingMethod")
                         .IsRequired()
@@ -392,34 +398,34 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnName("tracking_number");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
                     b.HasKey("Id")
                         .HasName("pk_shippings");
+
+                    b.HasIndex("ShippingId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_shippings_shipping_id");
 
                     b.ToTable("shippings", (string)null);
                 });
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.ShoppingCart", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("ShoppingCartId")
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("shopping_cart_id");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("integer")
-                        .HasColumnName("user_id");
-
-                    b.HasKey("Id")
+                    b.HasKey("ShoppingCartId")
                         .HasName("pk_shopping_carts");
 
                     b.ToTable("shopping_carts", (string)null);
@@ -427,10 +433,10 @@ namespace WebApi.WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id");
+                        .HasColumnName("user_id");
 
                     b.Property<string>("Avatar")
                         .IsRequired()
@@ -443,8 +449,12 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnName("billing_address");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created_at");
+
+                    b.Property<DateOnly>("DateOfBirth")
+                        .HasColumnType("date")
+                        .HasColumnName("date_of_birth");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -486,11 +496,15 @@ namespace WebApi.WebApi.Migrations
                         .HasColumnName("shipping_address");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("updated_at");
 
-                    b.HasKey("Id")
+                    b.HasKey("UserId")
                         .HasName("pk_users");
+
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasDatabaseName("ix_users_email");
 
                     b.ToTable("users", (string)null);
                 });
@@ -499,14 +513,14 @@ namespace WebApi.WebApi.Migrations
                 {
                     b.HasOne("WebApi.Domain.Src.Entities.Product", "product")
                         .WithMany("cartItems")
-                        .HasForeignKey("productId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_cart_items_products_product_id");
 
                     b.HasOne("WebApi.Domain.Src.Entities.ShoppingCart", "shoppingCart")
                         .WithMany("cartItems")
-                        .HasForeignKey("shoppingCartId")
+                        .HasForeignKey("ShoppingCartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_cart_items_shopping_carts_shopping_cart_id");
@@ -528,7 +542,7 @@ namespace WebApi.WebApi.Migrations
                 {
                     b.HasOne("WebApi.Domain.Src.Entities.User", "user")
                         .WithMany("orders")
-                        .HasForeignKey("userId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_orders_users_user_id");
@@ -540,14 +554,14 @@ namespace WebApi.WebApi.Migrations
                 {
                     b.HasOne("WebApi.Domain.Src.Entities.Order", "order")
                         .WithMany("Details")
-                        .HasForeignKey("orderId")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_order_details_orders_order_id");
 
                     b.HasOne("WebApi.Domain.Src.Entities.Product", "product")
                         .WithMany("orderDetails")
-                        .HasForeignKey("productId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_order_details_products_product_id");
@@ -561,14 +575,14 @@ namespace WebApi.WebApi.Migrations
                 {
                     b.HasOne("WebApi.Domain.Src.Entities.Order", "order")
                         .WithMany("Payment")
-                        .HasForeignKey("orderId")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_payments_orders_order_id");
 
                     b.HasOne("WebApi.Domain.Src.Entities.User", "user")
                         .WithMany("payments")
-                        .HasForeignKey("userId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_payments_users_user_id");
@@ -582,7 +596,7 @@ namespace WebApi.WebApi.Migrations
                 {
                     b.HasOne("WebApi.Domain.Src.Entities.Category", "category")
                         .WithMany("Products")
-                        .HasForeignKey("categoryId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_products_categorys_category_id");
@@ -592,19 +606,19 @@ namespace WebApi.WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.Review", b =>
                 {
+                    b.HasOne("WebApi.Domain.Src.Entities.Product", "product")
+                        .WithMany("reviews")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_reviews_products_product_id");
+
                     b.HasOne("WebApi.Domain.Src.Entities.User", "User")
                         .WithMany("reviews")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_reviews_users_user_id");
-
-                    b.HasOne("WebApi.Domain.Src.Entities.Product", "product")
-                        .WithMany("reviews")
-                        .HasForeignKey("productId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_reviews_products_product_id");
 
                     b.Navigation("User");
 
@@ -615,24 +629,24 @@ namespace WebApi.WebApi.Migrations
                 {
                     b.HasOne("WebApi.Domain.Src.Entities.Order", "order")
                         .WithOne("shipping")
-                        .HasForeignKey("WebApi.Domain.Src.Entities.Shipping", "Id")
+                        .HasForeignKey("WebApi.Domain.Src.Entities.Shipping", "ShippingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_shippings_orders_id");
+                        .HasConstraintName("fk_shippings_orders_shipping_id");
 
                     b.Navigation("order");
                 });
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.ShoppingCart", b =>
                 {
-                    b.HasOne("WebApi.Domain.Src.Entities.User", "user")
+                    b.HasOne("WebApi.Domain.Src.Entities.User", "User")
                         .WithOne("shoppingCart")
-                        .HasForeignKey("WebApi.Domain.Src.Entities.ShoppingCart", "Id")
+                        .HasForeignKey("WebApi.Domain.Src.Entities.ShoppingCart", "ShoppingCartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_shopping_carts_users_user_id");
 
-                    b.Navigation("user");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebApi.Domain.Src.Entities.Category", b =>

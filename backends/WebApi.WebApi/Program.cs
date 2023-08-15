@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -7,10 +8,28 @@ using WebApi.Business.Src.Abstractions;
 using WebApi.Business.Src.Implementations;
 using WebApi.Business.Src.Shared;
 using WebApi.Domain.Src.Abstractions;
+using WebApi.Domain.Src.Entities;
+using WebApi.WebApi.AuthorizationRequirement;
 using WebApi.WebApi.Database;
 using WebApi.WebApi.Repositores;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+// Add this line to build the configuration
+IConfiguration configuration = new ConfigurationBuilder()
+    .SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+    .AddEnvironmentVariables()
+    .Build();
+
+// Register the configuration in DI
+builder.Services.AddSingleton(configuration);
+
+// Register the JWT secret key
+var jwtSecretKey = configuration.GetValue<string>("Jwt:SecretKey");
+builder.Services.AddSingleton(jwtSecretKey);
 
 // Add Automapper DI
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
@@ -22,38 +41,30 @@ builder.Services.AddControllers();
 
 // Add Service DI
 builder.Services
-.AddScoped<IAuthService, AuthService>()
+
 
 .AddScoped<ICartItemRepo, CartItemRepo>()
-.AddScoped<ICartItemService, CartItemService>()
-
-// .AddScoped<ICategoryRepo, CategoryRepo>()
-// .AddScoped<ICategoryService, CategoryService>()
-
-// .AddScoped<IOrderdetailRepo, OrderdetailRepo>()
-// .AddScoped<IOrderDetailService, OrderDetailServer>()
-
-// .AddScoped<IOrderRepo, OrderRepo>()
-// .AddScoped<IOrderService, OrderService>()
-
-// .AddScoped<IPaymentRepo, PaymentRepo>()
-// .AddScoped<IPaymentService, PaymentService>()
-
-// .AddScoped<IReviewRepo, ReviewRepo>()
-// .AddScoped<IReviewService, ReviewService>()
-
-// .AddScoped<IShippingRepo, ShippingRepo>()
-// .AddScoped<IShippingService, ShippingService>()
-
-// .AddScoped<IShoppingCartRepo, ShoppingCartRepo>()
-// .AddScoped<IShoppingCartService, ShoppingCartService>()
-
-// .AddScoped<IProductRepo, ProductRepo>()
-// .AddScoped<IProductService, ProductService>()
-
+.AddScoped<IBaseRepo<Category>, BaseRepo<Category>>()
+.AddScoped<IBaseRepo<OrderDetail>, BaseRepo<OrderDetail>>()
+.AddScoped<IBaseRepo<Order>, BaseRepo<Order>>()
+.AddScoped<IBaseRepo<Payment>, BaseRepo<Payment>>()
+.AddScoped<IBaseRepo<Review>, BaseRepo<Review>>()
+.AddScoped<IBaseRepo<Shipping>, BaseRepo<Shipping>>()
+.AddScoped<IBaseRepo<ShoppingCart>, BaseRepo<ShoppingCart>>()
+.AddScoped<IBaseRepo<Product>, BaseRepo<Product>>()
 .AddScoped<IUserRepo, UserRepo>()
-.AddScoped<IUserService, UserService>();
 
+.AddScoped<ICategoryService, CategoryService>()
+.AddScoped<IOrderDetailService, OrderDetailServer>()
+.AddScoped<IOrderService, OrderService>()
+.AddScoped<IPaymentService, PaymentService>()
+.AddScoped<IReviewService, ReviewService>()
+.AddScoped<IShippingService, ShippingService>()
+.AddScoped<IShoppingCartService, ShoppingCartService>()
+.AddScoped<IProductService, ProductService>()
+.AddScoped<IUserService, UserService>()
+.AddScoped<ICartItemService, CartItemService>()
+.AddScoped<IAuthService, AuthService>();
 // Add services to the container.
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -68,6 +79,11 @@ builder.Services.AddSwaggerGen(options =>
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+
+//Add policy based requirement 
+builder.Services.AddSingleton<OrderOwerOnlyHandler>();
+builder.Services.AddSingleton<UserOnlyHandler>();
+builder.Services.AddSingleton<OnlyReviewOwnerHandler>();
 //Config route
 builder.Services.Configure<RouteOptions>(options =>
 {
@@ -81,11 +97,19 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     options.TokenValidationParameters = new TokenValidationParameters
     {
          ValidateIssuer = true,
-         ValidIssuer = "E-commerce backend",
+         ValidIssuer = "Ecommerce-backend",
          ValidateAudience = false,
          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my-secrete-key-jwt-token-validator")),
          ValidateIssuerSigningKey = true
     };
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("EmailWhiteList", policy => policy.RequireClaim(ClaimTypes.Email, "Admin@gmail.com"));
+    options.AddPolicy("OrderOwnerOnly", policy => policy.Requirements.Add(new OrderOwerOnly()));
+    options.AddPolicy("UserOnly", policy => policy.Requirements.Add(new UserOnly()));
+    options.AddPolicy("OnlyReviewOwner", policy => policy.Requirements.Add(new OnlyReviewOwner()));
 });
 
 

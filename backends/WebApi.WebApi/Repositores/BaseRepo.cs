@@ -66,7 +66,7 @@ namespace WebApi.WebApi.Repositores
             return enrity;
         }
 
-        public async Task<T> postItem(T item)
+        public virtual async Task<T> postItem(T item)
         {
             if(item == null)
             {
