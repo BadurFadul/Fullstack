@@ -2,7 +2,7 @@ using WebApi.Domain.Src.Entities;
 
 namespace WebApi.Domain.Src.Abstractions
 {
-    public interface ICartitemRepo: IBaseRepo<CartItem>
+    public interface ICartItemRepo: IBaseRepo<CartItem>
     {
         
     }

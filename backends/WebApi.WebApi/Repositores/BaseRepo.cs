@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebApi.Business.Src.Shared;
 using WebApi.Domain.Src.Abstractions;
 using WebApi.Domain.Src.Shared;
 using WebApi.WebApi.Database;
@@ -51,7 +52,7 @@ namespace WebApi.WebApi.Repositores
             // {
             //     query = query.Skip((queryOptions.PagNumber - 1) * queryOptions.PerPage).Take(queryOptions.PerPage);
             // }
-            return await _dbSet.ToListAsync();
+            return await _dbSet.AsNoTracking().ToListAsync();
             
         }
 
@@ -60,7 +61,7 @@ namespace WebApi.WebApi.Repositores
             var enrity = await _dbSet.FindAsync(id);
             if(enrity == null)
             {
-                throw new Exception("Entity not found");
+                throw CustomException.NotFoundException();
             }
             await _context.SaveChangesAsync();
             return enrity;

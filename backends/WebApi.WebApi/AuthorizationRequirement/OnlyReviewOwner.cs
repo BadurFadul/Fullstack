@@ -15,7 +15,7 @@ namespace WebApi.WebApi.AuthorizationRequirement
         {
             var authenticatedUser = context.User;
             var userId = authenticatedUser.FindFirst(ClaimTypes.NameIdentifier)!.Value;
-            if(resource.Users.UserId.ToString() == userId)
+            if(resource.Users.Id.ToString() == userId)
             {
                 context.Succeed(requirement);
             }

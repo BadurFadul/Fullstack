@@ -5,8 +5,9 @@ namespace WebApi.Domain.Src.Entities
     {
         public int Quantity { get; set; }
         public double Price {get; set;}
-        public Order order { get; set; }
-        public Product product { get; set; }
+        public Order Order { get; set; }
+        public Guid OrderId { get; set; }
+        // public Product product { get; set; }
          
     }
 }

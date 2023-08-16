@@ -37,18 +37,86 @@ namespace WebApi.WebApi.Database
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.HasPostgresEnum<Role>();
-            //modelBuilder.HasPostgresEnum<OrderStatus>();
 
-            modelBuilder.Entity<User>()
-            .HasOne(u => u.shoppingCart)
-            .WithOne(a => a.User)
-            .HasForeignKey<ShoppingCart>(u => u.ShoppingCartId);
+            modelBuilder.Entity<Product>()
+            .HasOne(p => p.category)
+            .WithMany(p => p.Products)
+            .HasForeignKey(p => p.CategoryId)
+            .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Order>()
-            .HasOne(o => o.shipping)
-            .WithOne(o => o.order)
-            .HasForeignKey<Shipping>(u => u.ShippingId);
+            .HasOne(p => p.User)
+            .WithMany(p => p.Orders)
+            .HasForeignKey(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Review>()
+            .HasOne(p => p.User)
+            .WithMany(P => P.Reviews)
+            .HasForeignKey(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Payment>()
+            .HasOne(p => p.User)
+            .WithMany(p => p.payments)
+            .HasForeignKey(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<OrderDetail>()
+            .HasOne(p => p.Order)
+            .WithMany(p => p.OrderDetails)
+            .HasForeignKey(p => p.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Payment>()
+            .HasOne(p => p.Order)
+            .WithMany(p => p.Payments)
+            .HasForeignKey(p => p.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Review>()
+            .HasOne(p => p.Product)
+            .WithMany(p => p.Reviews)
+            .HasForeignKey(p => p.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<CartItem>()
+            .HasOne(p => p.Product)
+            .WithMany(p => p.cartItems)
+            .HasForeignKey(p => p.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<CartItem>()
+            .HasOne(p => p.shoppingCart)
+            .WithMany(p => p.cartItems)
+            .HasForeignKey(p => p.ShoppingCartId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ShoppingCart>()
+            .HasOne(p => p.User)
+            .WithOne(p => p.shoppingCart)
+            .HasForeignKey<ShoppingCart>(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Shipping>()
+            .HasOne(p => p.Order)
+            .WithOne(p => p.shipping)
+            .HasForeignKey<Shipping>(p => p.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+    
+            //modelBuilder.HasPostgresEnum<OrderStatus>();
+
+            // modelBuilder.Entity<User>()
+            // .HasOne(u => u.shoppingCart)
+            // .WithOne(a => a.User)
+            // .HasForeignKey<ShoppingCart>(u => u.ShoppingCartId);
+
+            // modelBuilder.Entity<Order>()
+            // .HasOne(o => o.shipping)
+            // .WithOne(o => o.order)
+            // .HasForeignKey<Shipping>(u => u.ShippingId);
 
             modelBuilder.Entity<User>()
             .HasIndex(u => u.Email).IsUnique();

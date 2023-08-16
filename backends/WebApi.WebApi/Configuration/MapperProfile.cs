@@ -33,6 +33,7 @@ namespace WebApi.WebApi.Configuration
             CreateMap<PaymentCreateDto, Payment>();
 
             CreateMap<Product,ProductReadDto>();
+            CreateMap<ProductReadDto, Product>();
             CreateMap<ProductUpdateDto, Product>();
             CreateMap<ProductCreateDto, Product>();
 

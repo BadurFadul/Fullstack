@@ -25,7 +25,7 @@ namespace WebApi.WebApi.Repositores
 
         public async Task<User?> FindOneByEmail(string email)
         {
-            return await _users.FirstOrDefaultAsync(x => x.Email == email);
+            return await _users.AsNoTracking().FirstOrDefaultAsync(x => x.Email == email);
         }
 
         public async Task<User> UpdatePassword(User user)

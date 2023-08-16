@@ -3,8 +3,9 @@ namespace WebApi.Domain.Src.Entities
 {
     public class ShoppingCart: BaseWithId 
     {
-        public int UserID { get; set; }
-        public User user { get; set; }
         public List<CartItem> cartItems { get; set; }
+        public User User { get; set; }
+        public Guid UserId { get; set; }
+        
     }
 }

@@ -24,8 +24,8 @@ namespace WebApi.Controller.Src.Controllers
             return Ok(await _baseService.GetAll(queryOptions));
         }
 
-        [HttpGet("{id}")]
-        public virtual async Task<ActionResult<TReadDto>> GetById([FromRoute] string id)
+        [HttpGet("{id:Guid}")]
+        public virtual async Task<ActionResult<TReadDto>> GetById([FromRoute] Guid id)
         {
             return Ok(await _baseService.GetById(id));
         }
@@ -34,18 +34,18 @@ namespace WebApi.Controller.Src.Controllers
         public virtual async Task<ActionResult<TReadDto>> Post([FromBody]TCreateDto item)
         {
             var createdObject = await _baseService.postItem(item);
-            return CreatedAtAction("created", createdObject);
+            return CreatedAtAction(nameof(Post), createdObject);
         }
 
-        [HttpPatch("{id}")]
-        public virtual async Task<ActionResult<TReadDto>> Update([FromRoute]string id,[FromBody] TUpdateDto updateItem)
+        [HttpPatch("{id:Guid}")]
+        public virtual async Task<ActionResult<TReadDto>> Update([FromRoute]Guid id,[FromBody] TUpdateDto updateItem)
         {
             var updatedObject = _baseService.UpdateItem(id, updateItem);
             return Ok(updateItem);
         }
 
-        [HttpDelete("{id}")]
-        public virtual async Task<ActionResult<TReadDto>> DeleteById([FromRoute]string id)
+        [HttpDelete("{id:Guid}")]
+        public virtual async Task<ActionResult<TReadDto>> DeleteById([FromRoute]Guid id)
         {
             return StatusCode(204,await _baseService.DeleteItem(id));
         }

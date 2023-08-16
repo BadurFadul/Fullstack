@@ -7,7 +7,7 @@ using WebApi.Domain.Src.Entities;
 namespace WebApi.WebApi.Migrations
 {
     /// <inheritdoc />
-    public partial class createdatabase : Migration
+    public partial class CreateDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +19,7 @@ namespace WebApi.WebApi.Migrations
                 name: "categorys",
                 columns: table => new
                 {
-                    category_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     name = table.Column<string>(type: "text", nullable: false),
                     image = table.Column<string>(type: "text", nullable: false),
                     description = table.Column<string>(type: "text", nullable: false),
@@ -28,14 +28,14 @@ namespace WebApi.WebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_categorys", x => x.category_id);
+                    table.PrimaryKey("pk_categorys", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "users",
                 columns: table => new
                 {
-                    user_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     first_name = table.Column<string>(type: "text", nullable: false),
                     last_name = table.Column<string>(type: "text", nullable: false),
                     email = table.Column<string>(type: "text", nullable: false),
@@ -52,14 +52,14 @@ namespace WebApi.WebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_users", x => x.user_id);
+                    table.PrimaryKey("pk_users", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "products",
                 columns: table => new
                 {
-                    product_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     name = table.Column<string>(type: "text", nullable: false),
                     price = table.Column<double>(type: "double precision", nullable: false),
                     stock_quantity = table.Column<int>(type: "integer", nullable: false),
@@ -70,12 +70,12 @@ namespace WebApi.WebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_products", x => x.product_id);
+                    table.PrimaryKey("pk_products", x => x.id);
                     table.ForeignKey(
                         name: "fk_products_categorys_category_id",
                         column: x => x.category_id,
                         principalTable: "categorys",
-                        principalColumn: "category_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -83,7 +83,7 @@ namespace WebApi.WebApi.Migrations
                 name: "orders",
                 columns: table => new
                 {
-                    order_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     order_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     shipping_address = table.Column<string>(type: "text", nullable: false),
                     billing_address = table.Column<string>(type: "text", nullable: false),
@@ -95,12 +95,12 @@ namespace WebApi.WebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_orders", x => x.order_id);
+                    table.PrimaryKey("pk_orders", x => x.id);
                     table.ForeignKey(
                         name: "fk_orders_users_user_id",
                         column: x => x.user_id,
                         principalTable: "users",
-                        principalColumn: "user_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -108,18 +108,19 @@ namespace WebApi.WebApi.Migrations
                 name: "shopping_carts",
                 columns: table => new
                 {
-                    shopping_cart_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    user_id = table.Column<Guid>(type: "uuid", nullable: false),
                     created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_shopping_carts", x => x.shopping_cart_id);
+                    table.PrimaryKey("pk_shopping_carts", x => x.id);
                     table.ForeignKey(
                         name: "fk_shopping_carts_users_user_id",
-                        column: x => x.shopping_cart_id,
+                        column: x => x.user_id,
                         principalTable: "users",
-                        principalColumn: "user_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -127,7 +128,7 @@ namespace WebApi.WebApi.Migrations
                 name: "image",
                 columns: table => new
                 {
-                    image_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     link = table.Column<string>(type: "text", nullable: false),
                     product_id = table.Column<Guid>(type: "uuid", nullable: true),
                     created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -135,19 +136,19 @@ namespace WebApi.WebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_image", x => x.image_id);
+                    table.PrimaryKey("pk_image", x => x.id);
                     table.ForeignKey(
                         name: "fk_image_products_product_id",
                         column: x => x.product_id,
                         principalTable: "products",
-                        principalColumn: "product_id");
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "reviews",
                 columns: table => new
                 {
-                    review_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     review_text = table.Column<string>(type: "text", nullable: false),
                     rating = table.Column<int>(type: "integer", nullable: false),
                     user_id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -157,18 +158,18 @@ namespace WebApi.WebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_reviews", x => x.review_id);
+                    table.PrimaryKey("pk_reviews", x => x.id);
                     table.ForeignKey(
                         name: "fk_reviews_products_product_id",
                         column: x => x.product_id,
                         principalTable: "products",
-                        principalColumn: "product_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_reviews_users_user_id",
                         column: x => x.user_id,
                         principalTable: "users",
-                        principalColumn: "user_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -176,28 +177,21 @@ namespace WebApi.WebApi.Migrations
                 name: "order_details",
                 columns: table => new
                 {
-                    order_detail_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     quantity = table.Column<int>(type: "integer", nullable: false),
                     price = table.Column<double>(type: "double precision", nullable: false),
                     order_id = table.Column<Guid>(type: "uuid", nullable: false),
-                    product_id = table.Column<Guid>(type: "uuid", nullable: false),
                     created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_order_details", x => x.order_detail_id);
+                    table.PrimaryKey("pk_order_details", x => x.id);
                     table.ForeignKey(
                         name: "fk_order_details_orders_order_id",
                         column: x => x.order_id,
                         principalTable: "orders",
-                        principalColumn: "order_id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "fk_order_details_products_product_id",
-                        column: x => x.product_id,
-                        principalTable: "products",
-                        principalColumn: "product_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -205,7 +199,7 @@ namespace WebApi.WebApi.Migrations
                 name: "payments",
                 columns: table => new
                 {
-                    payment_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     payment_method = table.Column<string>(type: "text", nullable: false),
                     payment_amount = table.Column<double>(type: "double precision", nullable: false),
                     payment_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -216,18 +210,18 @@ namespace WebApi.WebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_payments", x => x.payment_id);
+                    table.PrimaryKey("pk_payments", x => x.id);
                     table.ForeignKey(
                         name: "fk_payments_orders_order_id",
                         column: x => x.order_id,
                         principalTable: "orders",
-                        principalColumn: "order_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_payments_users_user_id",
                         column: x => x.user_id,
                         principalTable: "users",
-                        principalColumn: "user_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -236,11 +230,11 @@ namespace WebApi.WebApi.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    shipping_id = table.Column<Guid>(type: "uuid", nullable: false),
                     shipping_method = table.Column<string>(type: "text", nullable: false),
                     shipping_cost = table.Column<double>(type: "double precision", nullable: false),
                     tracking_number = table.Column<string>(type: "text", nullable: false),
                     estimated_delivery_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    order_id = table.Column<Guid>(type: "uuid", nullable: false),
                     created_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     updated_at = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
@@ -248,10 +242,10 @@ namespace WebApi.WebApi.Migrations
                 {
                     table.PrimaryKey("pk_shippings", x => x.id);
                     table.ForeignKey(
-                        name: "fk_shippings_orders_shipping_id",
-                        column: x => x.shipping_id,
+                        name: "fk_shippings_orders_order_id",
+                        column: x => x.order_id,
                         principalTable: "orders",
-                        principalColumn: "order_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -259,7 +253,7 @@ namespace WebApi.WebApi.Migrations
                 name: "cart_items",
                 columns: table => new
                 {
-                    cart_item_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     quantity = table.Column<int>(type: "integer", nullable: false),
                     product_id = table.Column<Guid>(type: "uuid", nullable: false),
                     shopping_cart_id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -268,18 +262,18 @@ namespace WebApi.WebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_cart_items", x => x.cart_item_id);
+                    table.PrimaryKey("pk_cart_items", x => x.id);
                     table.ForeignKey(
                         name: "fk_cart_items_products_product_id",
                         column: x => x.product_id,
                         principalTable: "products",
-                        principalColumn: "product_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_cart_items_shopping_carts_shopping_cart_id",
                         column: x => x.shopping_cart_id,
                         principalTable: "shopping_carts",
-                        principalColumn: "shopping_cart_id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -302,11 +296,6 @@ namespace WebApi.WebApi.Migrations
                 name: "ix_order_details_order_id",
                 table: "order_details",
                 column: "order_id");
-
-            migrationBuilder.CreateIndex(
-                name: "ix_order_details_product_id",
-                table: "order_details",
-                column: "product_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_orders_user_id",
@@ -339,9 +328,15 @@ namespace WebApi.WebApi.Migrations
                 column: "user_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_shippings_shipping_id",
+                name: "ix_shippings_order_id",
                 table: "shippings",
-                column: "shipping_id",
+                column: "order_id",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "ix_shopping_carts_user_id",
+                table: "shopping_carts",
+                column: "user_id",
                 unique: true);
 
             migrationBuilder.CreateIndex(

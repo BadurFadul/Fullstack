@@ -7,17 +7,19 @@ namespace WebApi.Domain.Src.Entities
         public string ShippingAddress { get; set; }
         public string BillingAddress { get; set; }
         public double TotalPrice { get; set; }
-        public OrderStatus OrderStatus { get; set; }
-        public User user { get; set; }
-        public List<OrderDetail> Details { get; set; }
-        public List<Payment> Payment { get; set; }
-        public Shipping shipping { get; set; }
+        public string OrderStatus { get; set; }
+        public User User { get; set; }
+        public Guid UserId { get; set; }
+        public List<OrderDetail> OrderDetails { get; set; }
+        public List<Payment> Payments { get; set; }
+         public Shipping shipping { get; set; }
     }
 
-    public enum OrderStatus
-    {
-        received,
-        Pending,
-        shipped
-    }
+    // [JsonConverter(typeof(JsonStringEnumConverter))]
+    // public enum OrderStatus
+    // {
+    //     received,
+    //     Pending,
+    //     shipped
+    // }
 }
