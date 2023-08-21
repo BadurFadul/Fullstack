@@ -48,7 +48,7 @@ namespace WebApi.Controller.Src.Controllers
             } 
         }
 
-        [Authorize(Role = "Admin")]
+        [Authorize(Roles = "Admin")]
         public override async Task<ActionResult<UserReadDto>> DeleteById([FromRoute]Guid id)
         {
             return StatusCode(204,await _userService.DeleteItem(id));
