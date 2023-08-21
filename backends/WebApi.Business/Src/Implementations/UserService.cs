@@ -37,6 +37,10 @@ namespace WebApi.Business.Src.Implementations
         {
             var entity = _mapper.Map<User>(user);
             PasswordService.HashPassword(user.Password, out var hashedPassword, out var salt);
+            if(hashedPassword == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
             entity.Password = hashedPassword;
             entity.Salt = salt;
             var created = await _userRepo.CreateAdmin(entity);

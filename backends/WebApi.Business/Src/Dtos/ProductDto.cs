@@ -10,7 +10,7 @@ namespace WebApi.Business.Src.Dtos
         public string Description { get; set; }
         public List<Image> Images { get; set; }
         public int StockQuantity { get; set; }
-        //public CategoryReadDto category { get; set; }
+        public CategoryReadDto category { get; set; }
         //public List<ReviewReadDto> reviews { get; set; } 
         // public List<CartItemReadDto> cartItems {get; set;}
         // public List<OrderDetailReadDto> orderDetails { get; set; } 

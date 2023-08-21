@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pdSn+fbH+GvsPOEetLJyTvlfg+NMg/FFuDHvNT4hM04TndIZyc28+Parfkxdf1Jx7hYJAtl05LPc/MOCFU9NFg==",
+  "dgSpecHash": "wgmN6jBK3ZPBHGHmFl4mfOVv2WuWJD2yRezyTZENcXw47TwCzn4j1NcvN24Rfj+cLSyZFMVHolx7E3xhDjarZQ==",
   "success": true,
-  "projectFilePath": "c:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Business\\WebApi.Business.csproj",
+  "projectFilePath": "C:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Business\\WebApi.Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bador\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\bador\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

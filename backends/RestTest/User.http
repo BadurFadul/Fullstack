@@ -1,0 +1,76 @@
+
+### Post User
+POST http://localhost:5082/api/v1/users
+content-type: application/json
+
+{
+    "firstName": "Mustafa",
+    "lastName": "Doe",
+    "email": "Mustafa@example.com",
+    "phoneNumber": "0487895654",
+    "password": "Mustafa123",
+    "avatar": "https://example.com/Mustafa_doe.jpg",
+    "dateOfBirth": "1990-05-10",
+    "shippingAddress": "Soulhus gatan 4",
+    "billingAddress": "Mustafa@gmail.com"
+  }
+
+### Post User
+POST http://localhost:5082/api/v1/users
+content-type: application/json
+  {
+    "firstName": "Margaret",
+    "lastName": "Mubarak",
+    "email": "Margaret.smith@example.com",
+    "phoneNumber": "234-567-8901",
+    "password": "Mubarak123",
+    "avatar": "https://example.com/Margaret_smith.jpg",
+    "dateOfBirth": "1985-08-12",
+    "shippingAddress": "789 Maple St, Hometown, USA",
+    "billingAddress": "101 Pine St, Hometown, USA"
+  }
+
+### Post User
+POST http://localhost:5082/api/v1/users
+content-type: application/json
+
+  {
+    "firstName": "Soul",
+    "lastName": "Moresson",
+    "email": "alice.Moresson@example.com",
+    "phoneNumber": "345-678-9012",
+    "password": "alice",
+    "avatar": "https://example.com/users/avatars/alice_Moresson.jpg",
+    "dateOfBirth": "1992-03-15",
+    "shippingAddress": "14 Khartoum, Anytown, USA",
+    "billingAddress": "Omdorman, Anytown, Sudan"
+  }
+### Authentication
+POST http://localhost:5082/api/v1/auth
+content-type: application/json
+
+{
+  "email": "Fadul@gmail.com",
+  "password": "Fadul123"
+}
+
+
+### Authentication Client
+POST http://localhost:5082/api/v1/auth
+content-type: application/json
+
+{
+  "email": "Mustafa@example.com",
+  "password": "Mustafa123"
+}
+
+### GET User
+GET  http://localhost:5082/api/v1/users
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJlYzE5YTNjZS00YTdmLTQ5ODgtODY4YS1hNDM1ZTljZDJmYTMiLCJyb2xlIjoiQ2xpZW50IiwiZW1haWwiOiJNdXN0YWZhQGV4YW1wbGUuY29tIiwiYmlydGhkYXRlIjoiMTk5MC0wNS0xMCIsIm5iZiI6MTY5MjI1OTA0NiwiZXhwIjoxNjkyMjYxNDQ2LCJpYXQiOjE2OTIyNTkwNDYsImlzcyI6IkVjb21tZXJjZS1iYWNrZW5kIn0.CmbNpoo2QibzBgfyUuKontntJAOh6pR9dxNX4vdeQQc
+
+
+### GET User
+DELETE  http://localhost:5082/api/v1/users/ec19a3ce-4a7f-4988-868a-a435e9cd2fa3
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJlYzE5YTNjZS00YTdmLTQ5ODgtODY4YS1hNDM1ZTljZDJmYTMiLCJyb2xlIjoiQ2xpZW50IiwiZW1haWwiOiJNdXN0YWZhQGV4YW1wbGUuY29tIiwiYmlydGhkYXRlIjoiMTk5MC0wNS0xMCIsIm5iZiI6MTY5MjI1NzMwMywiZXhwIjoxNjkyMjU5NzAzLCJpYXQiOjE2OTIyNTczMDMsImlzcyI6IkVjb21tZXJjZS1iYWNrZW5kIn0.SV2jljtbJRGqAdqJ8D2q7XNwCIWQvWxOEkd_mYcngSE

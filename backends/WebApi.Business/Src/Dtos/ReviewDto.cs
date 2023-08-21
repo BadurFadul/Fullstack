@@ -11,7 +11,7 @@ namespace WebApi.Business.Src.Dtos
         public string ReviewText { get; set; }
         public int Rating { get; set; }
         public UserReadDto Users {get; set;}
-        //public ProductReadDto Product {get; set;}
+        public ProductReadDto Product {get; set;}
     }
     public class ReviewCreateDto
     {

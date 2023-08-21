@@ -11,7 +11,7 @@ namespace WebApi.Business.Src.Dtos
         public int Quantity { get; set; }
         public double Price { get; set; }
         public OrderReadDto Order { get; set; }
-        // public ProductReadDto Product { get; set; }
+        public ProductReadDto Product { get; set; }
         
     }
     public class OrderDetailCreateDto

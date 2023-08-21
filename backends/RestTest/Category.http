@@ -1,0 +1,42 @@
+### Post Category1
+POST http://localhost:5082/api/v1/categorys
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhNGE2ZDA1Yy01YmVmLTQ1YzQtYTE0MC1lZTQ5OGIwYmMzNDkiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6IkZhZHVsQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjIwMjMtMDgtMTYiLCJuYmYiOjE2OTIyNTkwNzMsImV4cCI6MTY5MjI2MTQ3MywiaWF0IjoxNjkyMjU5MDczLCJpc3MiOiJFY29tbWVyY2UtYmFja2VuZCJ9.AcC-O-NwBDMJuzHnZvtSVMXDjG8nD5vaY4dMTI70wnY
+
+{
+    "name": "Cars",
+    "image": "https://example.com/categories/Cars.jpg",
+    "description": "Discover the latest Cars from top brands. Includes gadgets, audio devices, computers, and more."
+}
+
+### Post Category2
+POST http://localhost:5082/api/v1/categorys
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhNGE2ZDA1Yy01YmVmLTQ1YzQtYTE0MC1lZTQ5OGIwYmMzNDkiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6IkZhZHVsQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjIwMjMtMDgtMTYiLCJuYmYiOjE2OTIyMDUzMjgsImV4cCI6MTY5MjIwNzcyOCwiaWF0IjoxNjkyMjA1MzI4LCJpc3MiOiJFY29tbWVyY2UtYmFja2VuZCJ9.rsMLKrLtk0Rm8MYZzauuCNEpf2u0mrXywpq25hSOFxc
+
+{
+    "name": "Bikes",
+    "image": "https://example.com/Bikes/fashion.jpg",
+    "description": "Stay stylish with the trendiest clothing, footwear, and accessories. From everyday wear to special occasions."
+}
+
+### Post Category3
+POST http://localhost:5082/api/v1/categorys
+content-type: application/json
+Authorization: Bearer 
+
+{
+    "name": "Garden",
+    "image": "https://example.com/Garden/home_kitchen.jpg",
+    "description": "Explore a range of products to spruce up your home. From cookware to furniture to home decor items."
+}
+
+### Post Category3
+GET  http://localhost:5082/api/v1/categorys
+content-type: application/json
+
+### Delete Category
+DELETE http://localhost:5082/api/v1/categorys/fd6bbdda-0d0c-4826-849f-8859822444cb
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhNGE2ZDA1Yy01YmVmLTQ1YzQtYTE0MC1lZTQ5OGIwYmMzNDkiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6IkZhZHVsQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjIwMjMtMDgtMTYiLCJuYmYiOjE2OTIyNTQxOTksImV4cCI6MTY5MjI1NjU5OSwiaWF0IjoxNjkyMjU0MTk5LCJpc3MiOiJFY29tbWVyY2UtYmFja2VuZCJ9.g6tJZlV59AUnsmSuiqNx507CDfWXrV5DeQ1l2TmJIKM
+

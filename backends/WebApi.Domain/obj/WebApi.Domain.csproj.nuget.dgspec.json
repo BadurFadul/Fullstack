@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\WebApi.Domain.csproj": {}
+    "C:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\WebApi.Domain.csproj": {}
   },
   "projects": {
-    "c:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\WebApi.Domain.csproj": {
+    "C:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\WebApi.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\WebApi.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\WebApi.Domain.csproj",
         "projectName": "WebApi.Domain",
-        "projectPath": "c:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\WebApi.Domain.csproj",
+        "projectPath": "C:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\WebApi.Domain.csproj",
         "packagesPath": "C:\\Users\\bador\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\obj\\",
+        "outputPath": "C:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

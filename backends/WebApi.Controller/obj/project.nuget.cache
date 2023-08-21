@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jt9EW1Q9JfhTIReKFeIguKBNQOfkNODJb/2qDzik667c8aRVlF6SDIes2mle5kK3enah0SnkuwfxweGm6VYvLw==",
+  "dgSpecHash": "RxtR/qGIFxZDCH7KsTv5QG8a/vo37xpuhJfj0YYhmN+Dg5m+8CSV2OA0NIK8YQz+rButMQixJn8zFxLCLkyJjg==",
   "success": true,
-  "projectFilePath": "c:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Controller\\WebApi.Controller.csproj",
+  "projectFilePath": "C:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Controller\\WebApi.Controller.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bador\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\bador\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",

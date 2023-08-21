@@ -1,0 +1,48 @@
+### Post product1
+POST http://localhost:5082/api/v1/products
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhNGE2ZDA1Yy01YmVmLTQ1YzQtYTE0MC1lZTQ5OGIwYmMzNDkiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6IkZhZHVsQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjIwMjMtMDgtMTYiLCJuYmYiOjE2OTIyNTkxOTQsImV4cCI6MTY5MjI2MTU5NCwiaWF0IjoxNjkyMjU5MTk0LCJpc3MiOiJFY29tbWVyY2UtYmFja2VuZCJ9.Z_fXa5OgVvStpMSouQ8Ha3U-VHYr9KVR6AkmkehbnuQ
+
+{
+    "name": "Enchanted Novel",
+    "price": 15.99,
+    "description": "A thrilling fantasy novel about love, adventure, and magic.",
+    "images": [
+      {
+        "createdAt": "2023-08-15T12:10:56.171Z",
+        "updatedAt": "2023-08-15T12:10:56.171Z",
+        "id": "01b2c3d4-5678-9101-1121-314151617181",
+        "link": "https://example.com/products/images/enchanted_novel.jpg"
+      }
+    ],
+    "stockQuantity": 100,
+    "categoryId": "29c9964b-f907-48cb-ac7c-f1749d0bc185"
+}
+
+
+### Post product2
+POST http://localhost:5082/api/v1/products
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhNGE2ZDA1Yy01YmVmLTQ1YzQtYTE0MC1lZTQ5OGIwYmMzNDkiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6IkZhZHVsQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjIwMjMtMDgtMTYiLCJuYmYiOjE2OTIyMDUzMjgsImV4cCI6MTY5MjIwNzcyOCwiaWF0IjoxNjkyMjA1MzI4LCJpc3MiOiJFY29tbWVyY2UtYmFja2VuZCJ9.rsMLKrLtk0Rm8MYZzauuCNEpf2u0mrXywpq25hSOFxc
+
+ {
+    "name": "Glowing Skin Cream",
+    "price": 25.50,
+    "description": "A rejuvenating cream that revitalizes skin and offers a radiant glow.",
+    "images": [
+      {
+        "createdAt": "2023-08-15T12:11:45.900Z",
+        "updatedAt": "2023-08-15T12:11:45.900Z",
+        "id": "91a2b3c4-5678-9101-1121-314151617191",
+        "link": "https://example.com/products/images/skin_cream.jpg"
+      }
+    ],
+    "stockQuantity": 250,
+    "categoryId": ""
+  }
+
+
+### Post product2
+GET  http://localhost:5082/api/v1/products
+content-type: application/json
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhNGE2ZDA1Yy01YmVmLTQ1YzQtYTE0MC1lZTQ5OGIwYmMzNDkiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6IkZhZHVsQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjIwMjMtMDgtMTYiLCJuYmYiOjE2OTIyMDUzMjgsImV4cCI6MTY5MjIwNzcyOCwiaWF0IjoxNjkyMjA1MzI4LCJpc3MiOiJFY29tbWVyY2UtYmFja2VuZCJ9.rsMLKrLtk0Rm8MYZzauuCNEpf2u0mrXywpq25hSOFxc

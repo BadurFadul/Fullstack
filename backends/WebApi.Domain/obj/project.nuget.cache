@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1l1VNsJYQ3wmW/pWOn4O6Lr3xKO7UEaQzPDmgYaUCzAu65me3rn/Es5CwvLjLpkrmXJy0VSjIe53JF6eqHDGcg==",
+  "dgSpecHash": "ITp9jnQpVNDqJD0RMEwQGiLj8ZdNIXrkZA9GAD6abH3J23BMLbXE+H2TzCXvPA/ftids+SgPXRJI80918Uqktg==",
   "success": true,
-  "projectFilePath": "c:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\WebApi.Domain.csproj",
+  "projectFilePath": "C:\\Users\\bador\\Desktop\\Integrify\\Fullstack\\backends\\WebApi.Domain\\WebApi.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

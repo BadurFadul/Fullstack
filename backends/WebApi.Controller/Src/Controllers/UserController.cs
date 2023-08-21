@@ -48,22 +48,10 @@ namespace WebApi.Controller.Src.Controllers
             } 
         }
 
-        [Authorize]
+        [Authorize(Role = "Admin")]
         public override async Task<ActionResult<UserReadDto>> DeleteById([FromRoute]Guid id)
         {
-            var user = HttpContext.User;
-            var order = await _userService.GetById(id);
-            /* resource based authorization here */
-            var authorizeOwner = await _authorizationService.AuthorizeAsync(user,order, "UserOnly");
-             if(authorizeOwner.Succeeded)
-            {
-                await _userService.DeleteItem(id);
-                return StatusCode(204);
-            }
-            else
-            {
-                return new ForbidResult();
-            } 
+            return StatusCode(204,await _userService.DeleteItem(id));
         }
         
     }
