@@ -7,7 +7,7 @@ namespace WebApi.Business.Src.Dtos
         public string name { get; set; }
         public string Image { get; set; }
         public string Description { get; set; }
-        // public List<ProductReadDto> Products { get; set; }
+         public List<ProductReadDto> Products { get; set; }
     }
     public class CategoryCreateDto
     {

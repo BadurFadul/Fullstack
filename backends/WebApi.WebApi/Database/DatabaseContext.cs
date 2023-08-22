@@ -29,6 +29,7 @@ namespace WebApi.WebApi.Database
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.LogTo(Console.WriteLine);
             var builder = new NpgsqlDataSourceBuilder(_configuration.GetConnectionString("DefaultConnection"));
             optionsBuilder.AddInterceptors(new TimeStampInterceptor());
             builder.MapEnum<Role>();
@@ -37,6 +38,7 @@ namespace WebApi.WebApi.Database
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             base.OnModelCreating(modelBuilder);
             modelBuilder.HasPostgresEnum<Role>();
 

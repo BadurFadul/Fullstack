@@ -1,3 +1,5 @@
 {
-    "dotnet.defaultSolution": "WebApi.WebApi.sln"
+    "dotnet.defaultSolution": "WebApi.WebApi.sln",
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin/Release/net7.0/publish"
 }

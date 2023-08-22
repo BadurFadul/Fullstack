@@ -9,8 +9,7 @@ namespace WebApi.Business.Src.Dtos
     }
     public class ShoppingCartCreateDto
     {
-        //public List<CartItemReadDto> CartItems { get; set; }
-        //public Guid UserId { get; set; }
+        public Guid UserId { get; set; }
     }
     public class ShoppingCartUpdateDto
     {

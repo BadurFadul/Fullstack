@@ -23,8 +23,9 @@ namespace WebApi.WebApi.Middleware
             }
             catch (Exception e)
             {
+                var errorResponse = new { ErrorMessage = "An error occurred." + e.Message };
                 context.Response.StatusCode = 400;
-                await context.Response.WriteAsJsonAsync(e);
+                await context.Response.WriteAsJsonAsync(errorResponse);
             }
         }
     }

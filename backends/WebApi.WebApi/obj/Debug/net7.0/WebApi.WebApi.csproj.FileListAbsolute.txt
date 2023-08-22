@@ -70,3 +70,4 @@ C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\obj\Debug\net7
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\obj\Debug\net7.0\WebApi.WebApi.pdb
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\obj\Debug\net7.0\WebApi.WebApi.genruntimeconfig.cache
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\obj\Debug\net7.0\ref\WebApi.WebApi.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll

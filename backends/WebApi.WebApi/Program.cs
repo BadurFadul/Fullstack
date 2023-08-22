@@ -117,6 +117,13 @@ builder.Services.AddAuthorization(options =>
 });
 
 
+//Serialization 
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -125,6 +132,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//Cors error
+app.UseCors();
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
 

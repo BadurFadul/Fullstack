@@ -13,8 +13,8 @@ namespace WebApi.Business.Src.Dtos
         public double TotalPrice { get; set; }
         public string OrderStatus { get; set; }
         public UserReadDto user { get; set; }
-        // public List<OrderDetailReadDto> Details { get; set; }
-        // public List<PaymentReadDto> Payments { get; set; }
+        public List<OrderDetailReadDto> Details { get; set; }
+        public List<PaymentReadDto> Payments { get; set; }
         public ShippingReadDto shipping { get; set; }
     }
     public class OrderCreateDto

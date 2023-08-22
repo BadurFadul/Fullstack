@@ -1,22 +1,22 @@
 ### Post product1
 POST http://localhost:5082/api/v1/products
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhNGE2ZDA1Yy01YmVmLTQ1YzQtYTE0MC1lZTQ5OGIwYmMzNDkiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6IkZhZHVsQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjIwMjMtMDgtMTYiLCJuYmYiOjE2OTIyNTkxOTQsImV4cCI6MTY5MjI2MTU5NCwiaWF0IjoxNjkyMjU5MTk0LCJpc3MiOiJFY29tbWVyY2UtYmFja2VuZCJ9.Z_fXa5OgVvStpMSouQ8Ha3U-VHYr9KVR6AkmkehbnuQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJlMTA0MDE0Zi1hOTE1LTQzNDktYTQ1MS03MTk5NGZhZWZmZjQiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6IkZhZHVsQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjIwMjMtMDgtMjIiLCJuYmYiOjE2OTI3MDIyOTksImV4cCI6MTY5MjcwNDY5OSwiaWF0IjoxNjkyNzAyMjk5LCJpc3MiOiJFY29tbWVyY2UtYmFja2VuZCJ9.CFFkZB36_ZU-4r7RSa81SPcevLpXuVVjlkOu61UgQ3A
 
 {
-    "name": "Enchanted Novel",
-    "price": 15.99,
-    "description": "A thrilling fantasy novel about love, adventure, and magic.",
-    "images": [
-      {
-        "createdAt": "2023-08-15T12:10:56.171Z",
-        "updatedAt": "2023-08-15T12:10:56.171Z",
-        "id": "01b2c3d4-5678-9101-1121-314151617181",
-        "link": "https://example.com/products/images/enchanted_novel.jpg"
-      }
-    ],
-    "stockQuantity": 100,
-    "categoryId": "29c9964b-f907-48cb-ac7c-f1749d0bc185"
+  "name": "BMW M3",
+  "price": 56000,
+  "description": "An amazing car very nice. Can go anywhere and immerse you in it, perfect for road trips and daily commutes.",
+  "images": [
+    {
+      "createdAt": "2023-08-22T10:38:06.653Z",
+      "updatedAt": "2023-08-22T10:38:06.653Z",
+       "id": "3fa82f65-5727-7292-b3fc-6c963f33afa6",
+      "link": "https://example.com/Electronics/smart_led_tv.jpg"
+    }
+  ],
+  "stockQuantity": 3,
+  "categoryId": "f67d485d-d0f9-4905-8e88-1ac9569ce160"
 }
 
 

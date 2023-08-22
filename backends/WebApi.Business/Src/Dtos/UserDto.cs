@@ -12,9 +12,9 @@ namespace WebApi.Business.Src.Dtos
         public DateOnly DateOfBirth { get; set; }
         public string Avatar { get; set; }
         public Role Role { get; set; }
-        // public List<OrderReadDto> Orders { get; set; }
-        // public List<ReviewReadDto> Reviews { get; set; }
-        // public List<PaymentReadDto> Payments { get; set; }
+        public List<OrderReadDto> Orders { get; set; }
+        public List<ReviewReadDto> Reviews { get; set; }
+        public List<PaymentReadDto> Payments { get; set; }
         public ShoppingCartReadDto shoppingCart { get; set; }
     }
 
@@ -29,7 +29,7 @@ namespace WebApi.Business.Src.Dtos
         public DateOnly DateOfBirth { get; set; }
         public string ShippingAddress { get; set; }
         public string BillingAddress { get; set; }
-       // public ShoppingCartReadDto shoppingCart { get; set; }
+        //public ShoppingCartReadDto shoppingCart { get; set; }
     }
 
     public class UserUpdateDto

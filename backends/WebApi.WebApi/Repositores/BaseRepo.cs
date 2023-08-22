@@ -26,7 +26,7 @@ namespace WebApi.WebApi.Repositores
             return true;
         }
 
-        public async Task<IEnumerable<T>> GetAll(Options queryOptions)
+        public virtual async Task<IEnumerable<T>> GetAll(Options queryOptions)
         {
             // IQueryable<T> query = _dbSet;
 

@@ -18,6 +18,7 @@ content-type: application/json
 ### Post User
 POST http://localhost:5082/api/v1/users
 content-type: application/json
+
   {
     "firstName": "Margaret",
     "lastName": "Mubarak",
@@ -42,8 +43,8 @@ content-type: application/json
     "password": "alice",
     "avatar": "https://example.com/users/avatars/alice_Moresson.jpg",
     "dateOfBirth": "1992-03-15",
-    "shippingAddress": "14 Khartoum, Anytown, USA",
-    "billingAddress": "Omdorman, Anytown, Sudan"
+    "shippingAddress": "14 Khartoum, USA",
+    "billingAddress": "Omdorman, Sudan"
   }
 ### Authentication
 POST http://localhost:5082/api/v1/auth
@@ -67,8 +68,7 @@ content-type: application/json
 ### GET User
 GET  http://localhost:5082/api/v1/users
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJlYzE5YTNjZS00YTdmLTQ5ODgtODY4YS1hNDM1ZTljZDJmYTMiLCJyb2xlIjoiQ2xpZW50IiwiZW1haWwiOiJNdXN0YWZhQGV4YW1wbGUuY29tIiwiYmlydGhkYXRlIjoiMTk5MC0wNS0xMCIsIm5iZiI6MTY5MjI1OTA0NiwiZXhwIjoxNjkyMjYxNDQ2LCJpYXQiOjE2OTIyNTkwNDYsImlzcyI6IkVjb21tZXJjZS1iYWNrZW5kIn0.CmbNpoo2QibzBgfyUuKontntJAOh6pR9dxNX4vdeQQc
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJlMTA0MDE0Zi1hOTE1LTQzNDktYTQ1MS03MTk5NGZhZWZmZjQiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6IkZhZHVsQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjIwMjMtMDgtMjIiLCJuYmYiOjE2OTI2OTMwOTQsImV4cCI6MTY5MjY5NTQ5NCwiaWF0IjoxNjkyNjkzMDk0LCJpc3MiOiJFY29tbWVyY2UtYmFja2VuZCJ9.i-yNhN7RxOvnyfCUHMNRC4y_70B4rl6-KTIj0ToMD0E
 
 ### GET User
 DELETE  http://localhost:5082/api/v1/users/ec19a3ce-4a7f-4988-868a-a435e9cd2fa3
