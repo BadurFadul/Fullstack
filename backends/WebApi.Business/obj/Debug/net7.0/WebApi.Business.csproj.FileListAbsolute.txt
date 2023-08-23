@@ -1,4 +1,4 @@
-C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\bin\Debug\net7.0\WebApi.Business.deps.json
+c:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\bin\Debug\net7.0\WebApi.Business.deps.json
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\bin\Debug\net7.0\WebApi.Business.dll
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\bin\Debug\net7.0\WebApi.Business.pdb
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\bin\Debug\net7.0\WebApi.Domain.dll
@@ -8,8 +8,8 @@ C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\ne
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\net7.0\WebApi.Business.AssemblyInfoInputs.cache
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\net7.0\WebApi.Business.AssemblyInfo.cs
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\net7.0\WebApi.Business.csproj.CoreCompileInputs.cache
-C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\net7.0\WebApi.Business.csproj.CopyComplete
+c:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\net7.0\WebApi.Business.csproj.CopyComplete
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\net7.0\WebApi.Business.dll
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\net7.0\refint\WebApi.Business.dll
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\net7.0\WebApi.Business.pdb
-C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\net7.0\ref\WebApi.Business.dll
+c:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.Business\obj\Debug\net7.0\ref\WebApi.Business.dll

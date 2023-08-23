@@ -8,7 +8,7 @@ import SingleProduct from './Pages/SingleProduct'
 import Contact from './Pages/Contact'
 import Default  from './Pages/Default'
 import Profile from './Pages/Profile'
-import { Hero } from './Pages/Hero'
+import Hero  from './Pages/Hero'
 
 
 const router = createBrowserRouter([
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <Hero/>
       },
       {
-        path:"/products",
+        path:"products",
         element: <Products/>
       },
       {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         element: <Contact/>
       },
       {
-        path: '/profile',
+        path: 'profile',
         element: <Profile/>
       },
     ]

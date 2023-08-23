@@ -2,10 +2,10 @@
 
 export interface Products {
     Id: string
-    Name: string
-    Price: number
+    name: string
+    price: number
     StockQuantity: number
-    Description: string
+    description: string
     Images: string []
     category: string
     reviews: string []

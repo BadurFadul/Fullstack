@@ -51,9 +51,9 @@ const productSlice = createSlice({
     //   },
         sortByPrice: (state, actoion: PayloadAction<"low"|"high">) => {
             if (actoion.payload === "low") {
-                state.products.sort((a,b) => a.Price - b.Price)
+                state.products.sort((a,b) => a.price - b.price)
             }else {
-                state.products.sort((a,b) => b.Price - a.Price)
+                state.products.sort((a,b) => b.price - a.price)
             }  
           },
           cleanUpProducts: () => {

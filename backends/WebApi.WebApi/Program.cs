@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
@@ -36,7 +37,10 @@ builder.Services.AddSingleton(jwtSecretKey);
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 // Add db context
-builder.Services.AddDbContext<DatabaseContext>();
+builder.Services.AddDbContext<DatabaseContext>(options =>
+{
+    options.ConfigureWarnings(warnings => warnings.Throw(CoreEventId.ManyServiceProvidersCreatedWarning));
+});
 
 builder.Services.AddControllers();
 
@@ -67,6 +71,7 @@ builder.Services
 .AddScoped<ICartItemService, CartItemService>()
 .AddScoped<IAuthService, AuthService>();
 // Add services to the container.
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -116,6 +121,19 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("OnlyReviewOwner", policy => policy.Requirements.Add(new OnlyReviewOwner()));
 });
 
+builder.Services.AddCors(options => 
+{
+    options.AddPolicy("AllowOrigin", builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
+//builder warning
+
+
 
 //Serialization 
 builder.Services.AddControllersWithViews()
@@ -134,7 +152,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //Cors error
-app.UseCors();
+app.UseCors("AllowOrigin");
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
 

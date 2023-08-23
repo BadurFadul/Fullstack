@@ -9,6 +9,7 @@ C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Release\ne
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Release\net7.0\publish\EFCore.NamingConventions.dll
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Release\net7.0\publish\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Release\net7.0\publish\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Release\net7.0\publish\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Release\net7.0\publish\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Release\net7.0\publish\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\bador\Desktop\Integrify\Fullstack\backends\WebApi.WebApi\bin\Release\net7.0\publish\Microsoft.AspNetCore.Razor.Language.dll

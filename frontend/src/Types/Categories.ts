@@ -3,6 +3,6 @@ export interface categories {
     Id: string
     name: string
     Image: string
-    Description: string
+    description: string
     Products: string []
 }
