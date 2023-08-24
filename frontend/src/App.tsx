@@ -9,6 +9,7 @@ import Contact from './Pages/Contact'
 import Default  from './Pages/Default'
 import Profile from './Pages/Profile'
 import Hero  from './Pages/Hero'
+import Cart from './Pages/Cart'
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,12 @@ const router = createBrowserRouter([
       {
         path: 'profile',
         element: <Profile/>
+      },
+      {
+        path: 'cart',
+        element: <Cart open = {false} handleClose={function (): void {
+          throw new Error('Function not implemented.');
+        }}/>
       },
     ]
   },

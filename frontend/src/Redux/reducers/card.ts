@@ -18,7 +18,7 @@ const cardSlice = createSlice({
     initialState,
     reducers: {
       addToCart: (state, action: PayloadAction<Products>) => {
-        const itemInCart = state.items.find(item => item.product.Id === action.payload.Id)
+        const itemInCart = state.items.find(item => item.product.id === action.payload.id)
         if(itemInCart) {
             itemInCart.quantity++;
         } else {
@@ -28,7 +28,7 @@ const cardSlice = createSlice({
         removeProductFromCart: (state, action: PayloadAction<string>) => {
             const productId = action.payload;
             state.items = state.items.filter(
-              (item) => item.product.Id !== productId
+              (item) => item.product.id !== productId
             );
           },
           updateProductQuantityInCart: (
@@ -37,7 +37,7 @@ const cardSlice = createSlice({
           ) => {
             const { productId, quantity } = action.payload;
             const existingItem = state.items.find(
-              (item) => item.product.Id === productId
+              (item) => item.product.id === productId
             );
             if (existingItem) {
               existingItem.quantity = quantity;

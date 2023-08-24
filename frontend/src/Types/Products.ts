@@ -1,6 +1,8 @@
 
 
 export interface Products {
+    //[x: string]: string | undefined
+    id: string
     Id: string
     name: string
     price: number

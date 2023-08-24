@@ -11,17 +11,23 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
-import { Login } from '@mui/icons-material';
+import useAppSelector from '../Hooks/useAppSelector';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const logo = 'src\Assets\bador.png'
 
-const Home = () => {
+interface HeaderProps {
+  handleClickOpen: () => void;
+}
+
+const Home = ({handleClickOpen} : HeaderProps) => {
   const [state, setState] = useState(false)
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
+  const items = useAppSelector(state => state.cardReducer.items);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -150,14 +156,8 @@ const Home = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
             </Menu>
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
@@ -177,16 +177,6 @@ const Home = () => {
             E-Commerce
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {/* {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))} */}
-
               <Button color="inherit" component={Link} to="/">Home</Button>
               <Button color="inherit" component={Link} to="/products">Shops</Button>
               <Button color="inherit" component={Link} to="/profile">Contact</Button>
@@ -194,16 +184,16 @@ const Home = () => {
           <Box sx={{ flexGrow: 0 }}>
           <IconButton color="inherit">
           </IconButton>
-          <IconButton color="inherit" >
-              <ShoppingBagOutlinedIcon sx={{fontSize:'1.7rem'}} />
-              {/* {items.length} */}
+          <IconButton color="inherit" onClick={handleClickOpen} >
+              <ShoppingBagOutlinedIcon />
+              {items.length}
           </IconButton>
           <IconButton color="inherit">
-            <LightModeOutlinedIcon sx={{fontSize:'1.7rem'}} />
+            <LightModeOutlinedIcon  />
           </IconButton>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <AccountCircle fontSize='large'/>
+                <AccountCircle/>
               </IconButton>
             </Tooltip>
             
@@ -229,9 +219,7 @@ const Home = () => {
                 </MenuItem>
               ))}
             </Menu>
-              
           </Box>
-
         </Toolbar>
       </Container>
     </AppBar>

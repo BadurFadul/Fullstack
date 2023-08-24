@@ -40,7 +40,7 @@ const Products = () => {
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
         {Array.isArray(products) &&
           products.map((product) => (
-            <Box key={product.Id} width={{ xs: '100%', sm: '50%', md: '33.33%', lg: '25%' }}>
+            <Box key={product.id} width={{ xs: '100%', sm: '50%', md: '33.33%', lg: '25%' }}>
               <ProductCart products={product} />
             </Box>
           ))}
