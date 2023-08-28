@@ -37,9 +37,8 @@ builder.Services.AddSingleton(jwtSecretKey);
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 // Add db context
-builder.Services.AddDbContext<DatabaseContext>(options =>
-{
-    options.ConfigureWarnings(warnings => warnings.Throw(CoreEventId.ManyServiceProvidersCreatedWarning));
+builder.Services.AddDbContext<DatabaseContext>(options => {
+    
 });
 
 builder.Services.AddControllers();
@@ -87,12 +86,12 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 //Add policy based requirement 
-builder.Services.AddSingleton<OrderOwerOnlyHandler>();
-builder.Services.AddSingleton<UserOnlyHandler>();
-builder.Services.AddSingleton<OnlyReviewOwnerHandler>();
+builder.Services.AddScoped<OrderOwerOnlyHandler>();
+builder.Services.AddScoped<UserOnlyHandler>();
+builder.Services.AddScoped<OnlyReviewOwnerHandler>();
 
 //add Errorhnadlar
-builder.Services.AddSingleton<ErrorHandlerMiddleware>();
+builder.Services.AddScoped<ErrorHandlerMiddleware>();
 //Config route
 builder.Services.Configure<RouteOptions>(options =>
 {
@@ -136,10 +135,10 @@ builder.Services.AddCors(options =>
 
 
 //Serialization 
-builder.Services.AddControllersWithViews()
-    .AddNewtonsoftJson(options =>
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-);
+// builder.Services.AddControllersWithViews()
+//     .AddNewtonsoftJson(options =>
+//     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+// );
 
 
 var app = builder.Build();
