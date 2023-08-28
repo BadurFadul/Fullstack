@@ -1,7 +1,6 @@
 # Fullstack Project
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-v.4-green)
-![SASS](https://img.shields.io/badge/SASS-v.4-hotpink)
 ![React](https://img.shields.io/badge/React-v.18-blue)
 ![Redux toolkit](https://img.shields.io/badge/Redux-v.1.9-brown)
 ![.NET Core](https://img.shields.io/badge/.NET%20Core-v.7-purple)
@@ -34,29 +33,17 @@ This repository contains a Fullstack project that combines a frontend built with
 
 ## Features
 
-### Mandatory Features
+### Mandatory 
 
 #### User Functionalities
 1. **User Management:** Users can register for an account and log in, excluding admin registration.
 2. **Browse Products:** Users can view all available products, see details of individual products, search, and apply sorting.
 3. **Add to Cart:** Users can add products to their cart and manage it.
 4. **Checkout:** Users can place orders for the products in their cart.
-
-#### Admin Functionalities
-1. **Admin Dashboard:** Admins have a dashboard for insights into user activities, orders, and product management.
-2. **Product Management:** Admins can add, update, and remove products.
-3. **Order Management:** Admins manage user orders, process them, and track deliveries.
+5. **Log in and register** user can log in and register new user
+6. **User Profile** user can see profile details after logging in
 
 
-## Requirements
-
-Make sure you have these prerequisites installed:
-
-- Node.js (for frontend)
-- .NET Core SDK 7 (for backend)
-- PostgreSQL (for database)
-
-Refer to respective documentation for installation instructions.
 
 ## Getting Started
 
@@ -65,4 +52,4 @@ Refer to respective documentation for installation instructions.
 3. Set up backend: Go to `backend`, configure the database connection and environment settings, and run the backend server.
 4. Access the application via provided URL.
 
-Access the deployed application at [YourAppLinkHere](https://www.example.com).
+Access the deployed application at [YourAppLinkHere](https://transcendent-piroshki-190cc5.netlify.app).
