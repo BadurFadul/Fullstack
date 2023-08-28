@@ -1,12 +1,13 @@
 
 
 export interface CreateUser {
-    FirstName: string
-    LastName: string
-    Email: string
-    PhoneNumber: string
-    Avatar: string
-    DateOfBirth: Date
-    ShippingAddress: string
-    BillingAddress: string
+    firstName: string
+    lastName: string
+    email: string
+    phoneNumber: string
+    password: string
+    avatar: string
+    dateOfBirth: Date
+    shippingAddress: string
+    billingAddress: string
 }

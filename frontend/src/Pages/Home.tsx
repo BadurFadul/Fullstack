@@ -7,7 +7,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import BusinessIcon from '@mui/icons-material/Business';
 import { Link, Outlet } from 'react-router-dom';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
@@ -15,8 +15,6 @@ import useAppSelector from '../Hooks/useAppSelector';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-const logo = 'src\Assets\bador.png'
 
 interface HeaderProps {
   handleClickOpen: () => void;
@@ -28,6 +26,7 @@ const Home = ({handleClickOpen} : HeaderProps) => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const items = useAppSelector(state => state.cardReducer.items);
+  const authenticatedUser = useAppSelector(state => state.userReducer.currentUser);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -104,12 +103,6 @@ const Home = ({handleClickOpen} : HeaderProps) => {
       >
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
-          {/* <img
-              style={{ display: 'none' }}
-              src={logo}
-              alt="increase priority"
-          /> */}
         <Typography
             variant="h6"
             noWrap
@@ -180,6 +173,13 @@ const Home = ({handleClickOpen} : HeaderProps) => {
               <Button color="inherit" component={Link} to="/">Home</Button>
               <Button color="inherit" component={Link} to="/products">Shops</Button>
               <Button color="inherit" component={Link} to="/profile">Contact</Button>
+              <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {authenticatedUser && ( 
+              <Button color="inherit" component={Link} to="/profile">
+                Profile
+              </Button>
+            )}
+          </Box>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
           <IconButton color="inherit">
@@ -188,12 +188,12 @@ const Home = ({handleClickOpen} : HeaderProps) => {
               <ShoppingBagOutlinedIcon />
               {items.length}
           </IconButton>
-          <IconButton color="inherit">
+          {/* <IconButton color="inherit">
             <LightModeOutlinedIcon  />
-          </IconButton>
+          </IconButton> */}
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <AccountCircle/>
+                <AccountCircleOutlinedIcon  sx={{fontSize: '1.9rem'}}/>
               </IconButton>
             </Tooltip>
             
@@ -213,11 +213,26 @@ const Home = ({handleClickOpen} : HeaderProps) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {authenticatedUser ? (
+                  <div>
+                    <MenuItem>
+                      <Typography variant="body1" textAlign="center">
+                        {authenticatedUser.firstName}
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem>
+                      <Typography variant="body2" textAlign="center">
+                        {authenticatedUser.email}
+                      </Typography>
+                    </MenuItem>
+                  </div>
+                ) : (
+                  <MenuItem component={Link} to="/login">
+                    <Typography variant="body1" textAlign="center">
+                      Login
+                    </Typography>
+                  </MenuItem>
+                )}
             </Menu>
           </Box>
         </Toolbar>

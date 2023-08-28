@@ -1,5 +1,10 @@
 import React from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { Box, Typography, IconButton, useMediaQuery } from "@mui/material";
+import { Carousel } from "react-responsive-carousel";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import Home from './Pages/Home'
 import NotFound from './Pages/NotFound'
@@ -10,6 +15,8 @@ import Default  from './Pages/Default'
 import Profile from './Pages/Profile'
 import Hero  from './Pages/Hero'
 import Cart from './Pages/Cart'
+import Login from './Pages/Login'
+import Register from './Pages/Register'
 
 
 const router = createBrowserRouter([
@@ -23,7 +30,7 @@ const router = createBrowserRouter([
         element: <Hero/>
       },
       {
-        path:"products",
+        path: '/products',
         element: <Products/>
       },
       {
@@ -45,6 +52,15 @@ const router = createBrowserRouter([
         }}/>
       },
     ]
+    
+  },
+  {
+    path: 'login',
+    element: <Login/>
+  },
+  {
+    path: 'register',
+    element: <Register/>
   },
  
 ])

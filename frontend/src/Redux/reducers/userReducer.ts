@@ -3,6 +3,7 @@ import axios, { AxiosError } from "axios";
 
 import { Users } from "../../Types/Users";
 import { UserCredentials } from "../../Types/UserCredentials";
+import jwt_decode from "jwt-decode";
 
 const initialState: {
     users: Users[],
@@ -32,10 +33,14 @@ export const createUser = createAsyncThunk(
 
 export const UserLogin = createAsyncThunk(
     "users/UserLogin",  
-    async ({ email, password, userId }: UserCredentials & { userId: string }, { rejectWithValue }) => {
+    async ({ email, password }: UserCredentials, { rejectWithValue }) => {
         try {         
-            const result = await axios.post<{access_token: string}>("https://ecomercebadfad.azurewebsites.net/api/v1/auth", {email, password})
-            localStorage.setItem("token", result.data.access_token)
+            const result = await axios.post("https://ecomercebadfad.azurewebsites.net/api/v1/auth", {email, password})
+            const tokenId : string = result.data;
+            localStorage.setItem("token", tokenId)
+            const decodedToken = jwt_decode<{[x: string]: any; sub: string }>(tokenId);
+            const userId = decodedToken.nameid;
+            console.log(userId)
             const authentication = await axios.get<Users>(`https://ecomercebadfad.azurewebsites.net/api/v1/users/${userId}`, {
                 headers: {
                     "Authorization": `Bearer ${result.data.access_token}`
