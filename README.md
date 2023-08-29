@@ -10,6 +10,7 @@
 ## Project Overview
 
 This repository contains a Fullstack project that combines a frontend built with React and Redux and a backend built with ASP.NET Core 7 and Entity Framework Core. The project aims to deliver a seamless user experience while providing administrators with a robust management system.
+fully responsive app on both web and mobile.
 
 ## Technologies Used
 
