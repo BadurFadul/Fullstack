@@ -53,4 +53,4 @@ fully responsive app on both web and mobile.
 3. Set up backend: Go to `backend`, configure the database connection and environment settings, and run the backend server.
 4. Access the application via provided URL.
 
-Access the deployed application at [YourAppLinkHere](https://transcendent-piroshki-190cc5.netlify.app).
+Access the deployed application at [Here](https://b-comerce.netlify.app/).
